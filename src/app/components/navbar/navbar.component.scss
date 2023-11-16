@@ -1,0 +1,46 @@
+
+$primary-sea-green-3 : rgb(219, 253, 242);
+$primary-sea-green-4 : rgb(53, 237, 181);
+$primary-sea-green-4 : rgb(33, 217, 161);
+$primary-sea-green-5 : rgb(23, 207, 151);
+
+
+.all{
+    .main{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1vw;
+        background-color: $primary-sea-green-3;
+        .hero{
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+            .text{
+                font-size: 3vw;
+                letter-spacing: 0.1vw;
+                font-family: gabarito;
+                color: $primary-sea-green-5;
+                font-weight: 800;
+            }
+        }
+        .right{
+            .account{
+                button{
+                    border-radius: 4vw;  
+                    border:none;
+                    font-size: 1.4vw;
+                    font-weight: 800;
+                    color: $primary-sea-green-3;
+                    padding: 0.3vw 0.6vw;
+                    background-color: $primary-sea-green-5;                  
+                }
+           
+            }
+        }
+    }
+}
+
+:host ::ng-deep .mat-mdc-menu-content{
+    background-color: $primary-sea-green-3 !important;
+}

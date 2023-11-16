@@ -1,0 +1,14 @@
+<div class="all">
+    <div class="main">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input id="username" type="text" formControlName="username" placeholder="Name" />
+            <span *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched
+        ">enter valid username</span>
+
+            <input id="password" type="password" formControlName="password" placeholder="Password" />
+            <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+        ">enter valid password</span>
+           <button [disabled]="loginForm.invalid">Submit</button>    
+    </form>
+    </div>
+</div>

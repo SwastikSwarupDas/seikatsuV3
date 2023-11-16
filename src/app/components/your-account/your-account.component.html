@@ -1,0 +1,5 @@
+<div *ngIf="(isAuthenticated$ | async)">
+    <h1>username : {{(username$|async)}}</h1>
+    <h1>usertype : {{(userType$|async)}}</h1>
+    <button *ngIf="(userType$|async)==='seller'"><a routerLink="/upload">ADD PROPERTY</a></button>
+</div>

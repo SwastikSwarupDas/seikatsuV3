@@ -1,0 +1,26 @@
+<div class="all">
+    <app-navbar></app-navbar>
+        <div class="main">
+           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input id="username" type="text" formControlName="username" placeholder="Name">
+            <span *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">enter valid username</span>
+
+            <input id="password" type="password" formControlName="password" placeholder="Password">
+            <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">enter valid password</span>
+
+
+            <input id="email" type="text" formControlName="email" placeholder="Email">
+            <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">enter valid email</span>
+           
+            <!-- Dropdown Select for USER TYPE -->
+
+            <mat-chip-listbox formControlName="usertype" aria-label="usertype selection" required>
+                <mat-chip-option value="buyer">I'm a Buyer</mat-chip-option>
+                <mat-chip-option value="seller">I'm a seller</mat-chip-option>
+            </mat-chip-listbox>
+            <span *ngIf="loginForm.get('usertype')?.invalid && loginForm.get('usertype')?.touched">select one option</span>
+            <button [disabled]="loginForm.invalid">Submit</button>
+        </form>
+        </div>
+    <app-footer></app-footer>
+</div>

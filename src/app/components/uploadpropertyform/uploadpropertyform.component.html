@@ -1,0 +1,26 @@
+<div class="all">
+    <app-navbar></app-navbar>
+        <div class="main">
+           <form *ngIf="(isAuthenticated$|async)" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+            
+            <input id="image" type="file" (change)="handleFileInput($event)" formControlName="images" placeholder="Upload Image">
+            <span *ngIf="uploadForm.get('image')?.invalid && uploadForm.get('image')?.touched">Upload an Image</span>
+            
+            <input id="propertyName" type="text" formControlName="propertyName" placeholder="Property Name">
+            <span *ngIf="uploadForm.get('propertyName')?.invalid && uploadForm.get('propertyName')?.touched">Enter Valid Property Name</span>
+
+
+            <input id="locationName" type="text" formControlName="locationName" placeholder="Location Name">
+            <span *ngIf="uploadForm.get('locationName')?.invalid && uploadForm.get('locationName')?.touched">Enter Valid Location Name</span>
+
+            <input id="locationDescription" type="text" formControlName="locationDescription" placeholder="Location Description">
+            <span *ngIf="uploadForm.get('locationDescription')?.invalid && uploadForm.get('locationDescription')?.touched">Enter a Location Description</span>
+          
+            <input id="price" type="text" formControlName="price" placeholder="Approximate Starting Price">
+            <span *ngIf="uploadForm.get('price')?.invalid && uploadForm.get('price')?.touched">Enter a approximate starting price</span>
+
+            <button [disabled]="uploadForm.invalid">Submit</button>
+        </form>
+        </div>
+    <app-footer></app-footer>
+</div>

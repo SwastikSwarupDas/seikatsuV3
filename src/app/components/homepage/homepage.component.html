@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+
+<div *ngFor="let property of properties">
+    <h3>{{ property.propertyName }}</h3>
+    <div *ngFor="let image of property.images">
+      <img [src]="image" alt="{{ property.propertyName }} image">
+    </div>
+  </div>

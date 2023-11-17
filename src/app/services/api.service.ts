@@ -21,6 +21,8 @@ export interface Properties {
   locationDescription: string;
   propertyName: string;
   price:string;
+  sku:string;
+  userIds:string;
   geoLocation: GeoLocation; // assuming GeoLocation is another interface
 }
 
@@ -35,6 +37,7 @@ export interface GeoLocation{
 export class ApiService {
 
   user$!:Observable<user[]>;
+  singleuser$!:Observable<user[]>;
   properties$!:Observable<Properties[]>;
 
   password        : string='';
@@ -49,12 +52,15 @@ export class ApiService {
       return this.database.post('https://localhost:7122/api/Users', userdata);
   }
 
-  addProperty(propertyData:Properties):Observable<string>{
+  addProperty(propertyData:Properties){
     return this.database.post<Properties>('https://localhost:7122/api/Properties',propertyData)
-    .pipe(
-      map(response => response._id)
-    );
   }
+
+  appendPropertyDataintoUser(username: string, propertyData: Properties): Observable<any> {
+    const userData = { propertyIds: [propertyData.sku] };
+    return this.database.patch<user[]>(`https://localhost:7122/api/Users/addproperty?username=${username}`, userData);
+  }
+
 
 
   getAllUsers():Observable<user[]>{
@@ -65,6 +71,12 @@ export class ApiService {
   getAllProperties():Observable<Properties[]>{
     this.properties$ = this.database.get<Properties[]>('https://localhost:7122/api/Properties');
     return this.properties$;
+  }
+
+
+
+  getUserByUsername(username:string):Observable<user[]>{
+    return this.database.get<user[]>('https://localhost:7122/api/Users/'+username);
   }
 
   comparePasswords(enteredPassword:string,hashedPassword:string):boolean{

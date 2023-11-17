@@ -1,8 +1,8 @@
 <div class="all">
     <app-navbar></app-navbar>
         <div class="main">
-           <form *ngIf="(isAuthenticated$|async)" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-            
+           <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+            <!-- //*ngIf="(isAuthenticated$|async)" -->
             <input id="image" type="file" (change)="handleFileInput($event)" formControlName="images" placeholder="Upload Image">
             <span *ngIf="uploadForm.get('image')?.invalid && uploadForm.get('image')?.touched">Upload an Image</span>
             
@@ -15,9 +15,14 @@
 
             <input id="locationDescription" type="text" formControlName="locationDescription" placeholder="Location Description">
             <span *ngIf="uploadForm.get('locationDescription')?.invalid && uploadForm.get('locationDescription')?.touched">Enter a Location Description</span>
+            
+            <input id="sku" type="text" formControlName="sku" placeholder="Enter SKU">
+            <span *ngIf="uploadForm.get('sku')?.invalid && uploadForm.get('sku')?.touched">Enter Valid SKU</span>
           
             <input id="price" type="text" formControlName="price" placeholder="Approximate Starting Price">
             <span *ngIf="uploadForm.get('price')?.invalid && uploadForm.get('price')?.touched">Enter a approximate starting price</span>
+
+            <div #map class="map"></div>
 
             <button [disabled]="uploadForm.invalid">Submit</button>
         </form>

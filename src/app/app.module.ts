@@ -23,6 +23,7 @@ import { YourAccountComponent } from './components/your-account/your-account.com
 import { UploadpropertyformComponent } from './components/uploadpropertyform/uploadpropertyform.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

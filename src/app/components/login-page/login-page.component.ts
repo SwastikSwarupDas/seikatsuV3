@@ -13,6 +13,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginPageComponent {
   loginForm!:FormGroup;
+  failed:boolean=false; 
+  loaded:boolean=false;
+  imgUrl:string="https://picsum.photos/2000/?blur=10";
 
   constructor(private formBuilder:FormBuilder, private apiService:ApiService){
     this.loginForm = this.formBuilder.group({
@@ -32,10 +35,18 @@ export class LoginPageComponent {
       },
       error:error=>{
         console.error(error);
+        this.failed = true;
+        this.loginForm.reset();
       }
     });
   
     
+  }
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.loaded = true;
+    }, 3000);
   }
 
 }

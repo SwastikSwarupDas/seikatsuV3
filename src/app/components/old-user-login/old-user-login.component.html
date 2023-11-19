@@ -1,14 +1,55 @@
 <div class="all">
-    <div class="main">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <input id="username" type="text" formControlName="username" placeholder="Name" />
-            <span *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched
-        ">enter valid username</span>
+    <app-navbar></app-navbar>
 
-            <input id="password" type="password" formControlName="password" placeholder="Password" />
-            <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-        ">enter valid password</span>
-           <button [disabled]="loginForm.invalid">Submit</button>    
-    </form>
+
+    <div class="main">
+
+        <div class="tell">Welcome Back !</div>
+
+        <span class="advert-span placeholder-glow">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <input id="username" type="text" formControlName="username" placeholder="Name" />
+                
+                <div class="invalid">
+                <span *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched
+            ">Wrong Username. Try again</span>
+                </div>
+
+
+                <input id="password" type="password" formControlName="password" placeholder="Password" />
+                
+                
+                <div class="invalid">
+                <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+            ">Wrong Password. Did you Forget ?</span>
+                </div>
+                    
+                <button class="register" [disabled]="loginForm.invalid">Submit</button>
+            </form>
+
+            <div *ngIf="!loaded" class="advert placeholder ">
+                <div class="logo"><i class="ri-vip-crown-line"></i></div>
+                <div class="text"></div>
+            </div>
+
+            <div *ngIf="loaded" class="advert">
+                <div class="logo"><i class="ri-vip-crown-line"></i></div>
+                <div class="text">
+                    <ul>
+                        <li>
+                            Be part of the seikatsu elite club for $170/month
+                        </li>
+                        <li>
+                            Save Time and indulge in Luxury
+                        </li>
+                        <li>
+                            Enjoy special Elite Lounge Access
+                        </li>
+                    </ul>
+                </div>
+                <button class="register">seikatsu elite</button>
+            </div>
+        </span>
     </div>
+    <app-footer></app-footer>
 </div>

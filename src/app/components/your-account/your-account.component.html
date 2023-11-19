@@ -1,5 +1,44 @@
-<div *ngIf="(isAuthenticated$ | async)">
-    <h1>username : {{(username$|async)}}</h1>
-    <h1>usertype : {{(userType$|async)}}</h1>
-    <button *ngIf="(userType$|async)==='seller'"><a routerLink="/upload">ADD PROPERTY</a></button>
+<div class="all">
+    <app-navbar></app-navbar>
+    <!-- *ngIf="(isAuthenticated$ | async)" -->
+    <div class="main">
+        <div class="toprow">
+            MY PROFILE
+        </div>
+        <div class="main-box">
+            <div class="hero-img">
+                <i class="ri-user-3-line"></i>
+            </div>
+            <div class="user-info">
+                <span>NAME          : {{user.username}}</span>
+                <span>A/C TYPE  : {{user.usertype}}</span>
+                <button *ngIf="user.usertype==='seller'"><a routerLink="/upload">ADD PROPERTY</a></button>
+            </div>
+            <div class="premium-ad">
+                See interested customers with seikatsu elite membership
+                <button>SEIKATSU ELITE</button>
+            </div>
+        </div>
+        <div class="toprow">
+            PROPERTY LISTINGS
+        </div>
+        <div class="p-dis">
+            <div *ngFor="let property of properties" class="property">
+                <div class="img-holder" *ngFor="let image of property.images">
+                    <img [src]="image" alt="{{ property.propertyName }} image" />
+                  </div>
+                  <div class="info">
+                    <div class="uploader-img">
+                      <i class="ri-user-3-line"></i>
+                    </div>
+                    <div class="right">
+                      <div class="property-title">{{ property.propertyName }}</div>
+                      <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
 </div>
+

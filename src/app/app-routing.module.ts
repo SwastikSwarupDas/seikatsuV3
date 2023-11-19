@@ -6,6 +6,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { OldUserLoginComponent } from './components/old-user-login/old-user-login.component';
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { UploadpropertyformComponent } from './components/uploadpropertyform/uploadpropertyform.component';
+import { NotifsComponent } from './components/notifs/notifs.component';
+
 
 const routes: Routes = [
   {
@@ -25,6 +27,10 @@ const routes: Routes = [
   },
   {
     path:"upload",component:UploadpropertyformComponent
+  },
+  {
+    path:"notifs",
+    component:NotifsComponent
   }
 ];
 

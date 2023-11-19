@@ -1,0 +1,41 @@
+$primary-sea-green-2 : rgb(238, 253, 248);
+$primary-sea-green-3 : rgb(207, 249, 236);
+$primary-sea-green-4 : rgb(53, 237, 181);
+$primary-sea-green-4 : rgb(33, 217, 161);
+$primary-sea-green-5 : rgb(23, 207, 151);
+$primary-sea-green-6 : rgb(21, 172, 127);
+$primary-sea-green-7 : rgb(10, 109, 79);
+$primary-sea-green-8 : rgb(2, 69, 49);
+$color-scale-gray-0: #f0f6fc;
+$color-scale-gray-1: #c9d1d9;
+$color-scale-gray-2: #b1bac4;
+$color-scale-gray-3: #8b949e;
+$color-scale-gray-4: #6e7681;
+$color-scale-gray-5: #484f58;
+$color-scale-gray-6: #30363d;
+$color-scale-gray-7: #21262d;
+$color-scale-gray-8: #161b22;
+$color-scale-gray-9: #0d1117;
+
+
+
+.main{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    background-color: $primary-sea-green-2;
+    padding: 0.8vw 0;
+    justify-content: center;
+    gap: 0.7vw;
+
+    .logo{
+        color: $primary-sea-green-5;
+        font-family: 'Gabarito';
+        font-size: 1.3vw;
+    }
+    .copyright{
+        color: $color-scale-gray-2;
+        font-family: 'Gabarito';
+        font-size: 1vw;  
+    }
+}

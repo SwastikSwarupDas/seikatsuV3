@@ -7,16 +7,28 @@ import { ApiService, Properties } from 'src/app/services/api.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent {
+  loaded:boolean=false;
+
   properties: Properties[] = [];
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
+    
+    let loggedIn = localStorage.getItem('loggedin');
+    if (!loggedIn) 
+      { 
+        loggedIn = 'guest'; 
+        localStorage.setItem('loggedin', loggedIn); 
+      }
+
     this.fetchProperties();
+
   }
 
   fetchProperties() {
     this.apiService.getAllProperties().subscribe(properties => {
       this.properties = properties;
+      this.loaded=true;
     });
   }
 }

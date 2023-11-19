@@ -5,6 +5,23 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { AuthService } from './auth.service';
 
+export interface Notifs{
+  _id :  string;
+senderName : string;
+receiverName : string;
+flaggedUser	: string;
+flag : string;
+message	: string;
+messageType	:string;
+time:string;
+}
+
+export interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
+
+
 export interface user {
   _id: string;
   username: string;
@@ -39,7 +56,8 @@ export class ApiService {
   user$!:Observable<user[]>;
   singleuser$!:Observable<user[]>;
   properties$!:Observable<Properties[]>;
-
+  notifs$!:Observable<Notifs[]>;
+  
   password        : string='';
   hashedPassword  : string='';
 
@@ -62,7 +80,6 @@ export class ApiService {
   }
 
 
-
   getAllUsers():Observable<user[]>{
     this.user$ = this.database.get<user[]>('https://localhost:7122/api/Users');
     return this.user$;
@@ -73,7 +90,12 @@ export class ApiService {
     return this.properties$;
   }
 
+  getAllNotifs():Observable<Notifs[]>{
+    this.notifs$ = this.database.get<Notifs[]>('https://localhost:7122/api/Notif');
+    return this.notifs$;
+  }
 
+ 
 
   getUserByUsername(username:string):Observable<user[]>{
     return this.database.get<user[]>('https://localhost:7122/api/Users/'+username);

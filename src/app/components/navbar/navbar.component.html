@@ -15,24 +15,52 @@
                     d="M47 12.75C47 6.53679 41.9632 1.5 35.75 1.5H24.5V12.75C24.5 18.9632 29.5368 24 35.75 24C41.9632 24 47 18.9632 47 12.75Z"
                     class="ccustom" fill="#17CF97"></path>
             </svg>
-            <div class="text">
-                seikatsu   
-            </div>
+            <a routerLink="">
+                <div class="text">
+                        seikatsu
+                    <div class="houseofsagano">by house of Sagano</div>
+                </div>
+            </a>
         </div>
         <div class="right">
             <div class="account">
-              <button *ngIf="!(isAuthenticated$ | async)" [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
-              <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'buyer'" [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
-              <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'seller'" [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"><a routerLink="/register">Sign Up</a></button>
-                <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"><a routerLink="/login">Login</a></button>
-                <button mat-menu-item *ngIf="(isAuthenticated$ | async)">Hello {{ (username$ | async)}} </button>
-                <button mat-menu-item *ngIf="(isAuthenticated$ | async)"><a routerLink="acc">Your Account</a></button>
-                <button mat-menu-item *ngIf="(isAuthenticated$ | async)" (click)="logout()">Logout</button>
-              </mat-menu>
+                
+                <!-- *ngIf="(isAuthenticated$|async)" -->
+
+                <a routerLink="/notifs">
+                    <button>
+                        <i class="ri-notification-line"></i>
+                    </button>
+                </a>
+
+                <button *ngIf="!(isAuthenticated$ | async)" [matMenuTriggerFor]="menu"><i
+                        class="ri-user-line"></i></button>
+                <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'buyer'"
+                    [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
+                <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'seller'"
+                    [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
+                <mat-menu #menu="matMenu" class="custom-menu">
+                    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)">
+                        <a routerLink="/register">
+                            Sign Up
+                        </a>
+                        </button>
+                    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"><a routerLink="/login">Login</a></button>
+                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)">Hello {{ (username$ | async)}} </button>
+                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)"><a routerLink="/acc">Your
+                            Account</a></button>
+                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)" (click)="logout()">Logout</button>
+                </mat-menu>
             </div>
-          </div>
-          
+        </div>
+
     </div>
+    <div class="second-row">
+        <a routerLink="">SEMINARS</a>
+        <a routerLink="">BLOG</a>
+        <a routerLink="">LOCATIONS</a>
+        <a routerLink="">SAGANO ELITE</a>
+        <a routerLink="">SUPPORT</a>
+    </div>
+
 </div>

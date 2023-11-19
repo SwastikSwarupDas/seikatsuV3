@@ -1,0 +1,106 @@
+$primary-sea-green-2 : rgb(238, 253, 248);
+$primary-sea-green-2-5 : rgb(228, 248, 241);
+$primary-sea-green-3 : rgb(207, 249, 236);
+$primary-sea-green-4 : rgb(53, 237, 181);
+$primary-sea-green-4 : rgb(33, 217, 161);
+$primary-sea-green-5 : rgb(23, 207, 151);
+$primary-sea-green-6 : rgb(21, 172, 127);
+$primary-sea-green-7 : rgb(10, 109, 79);
+$primary-sea-green-8 : rgb(2, 69, 49);
+
+
+
+
+.all{
+    background-color: $primary-sea-green-2-5;
+    .main{
+        .property-display{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 4vw;
+            gap: 3vw;
+            .property{
+                border: 4px solid white;
+                flex-direction: column;
+                width: 20vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 1vw;
+            
+                padding: 0vw;
+                background-color:$primary-sea-green-3;
+                scale: 1;
+                overflow: hidden;
+                transition: scale 0.1s ease-in-out;
+                .img-holder{
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    width: 27vw;
+                    justify-content: center;
+                    border-radius: 0.5vw;
+                    overflow: hidden;
+                    height: 17vw;
+                    img{
+                        width: 27vw;
+                    }
+                    .loader-Image{
+                        display: flex;justify-content: center;
+                        background-color: $primary-sea-green-6;
+                        img{
+                            height: 4vw;
+                            width: 4vw;
+                        }
+                        width: 100%;
+                        height: 100%;
+                        align-items: center;
+                    }
+                }
+                .info{
+                    width: 100%;
+                    padding: 1vw;
+                    display: flex;
+                    gap: 2vw;
+                    .uploader-img{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        i{
+                            color: white;
+                            font-size: 1.8vw;
+                            font-weight: 600;
+                            padding: 0.2vw 0.8vw;
+                            border-radius: 0.4vw;
+                            background-color: $primary-sea-green-5;
+                        }
+                    }
+                    .property-title{
+                        color: $primary-sea-green-6;
+                        font-weight: 600;
+                        font-size: 1.4vw;
+                        letter-spacing: 0.05vw;
+                        p{
+                            span{
+                                height: 1vw;
+                                width: 12vw;
+                            }
+                        }
+                    }
+                    .uploaded-by{
+                        color: $primary-sea-green-5;
+                        span{
+                            height: 0.4vw;
+                            width: 10vw;
+                        }
+                    }
+                }
+            }
+            .property:hover{
+                cursor: pointer;
+                scale: 1.02;
+            }
+        }
+    }
+}

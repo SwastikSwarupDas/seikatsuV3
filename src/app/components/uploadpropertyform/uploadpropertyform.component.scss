@@ -1,3 +1,162 @@
-.map{
-    height: 40vw;
+$primary-sea-green-2 : rgb(238, 253, 248);
+$primary-sea-green-3 : rgb(219, 253, 242);
+$primary-sea-green-4 : rgb(53, 237, 181);
+$primary-sea-green-4 : rgb(33, 217, 161);
+$primary-sea-green-5 : rgb(23, 207, 151);
+$primary-sea-green-6 : rgb(21, 172, 127);
+$primary-sea-green-7 : rgb(10, 109, 79);
+$primary-sea-green-8 : rgb(2, 69, 49);
+$primary-sea-green-2-5 : rgb(228, 248, 241);
+
+$color-scale-black: #010409;
+$color-scale-white: #ffffff;
+$color-scale-gray-0: #f0f6fc;
+$color-scale-gray-1: #c9d1d9;
+$color-scale-gray-2: #b1bac4;
+$color-scale-gray-3: #8b949e;
+$color-scale-gray-4: #6e7681;
+$color-scale-gray-5: #484f58;
+$color-scale-gray-6: #30363d;
+$color-scale-gray-7: #21262d;
+$color-scale-gray-8: #161b22;
+$color-scale-gray-9: #0d1117;
+$color-scale-blue-0: #cae8ff;
+$color-scale-blue-1: #a5d6ff;
+$color-scale-blue-2: #79c0ff;
+$color-scale-blue-3: #58a6ff;
+$color-scale-blue-4: #388bfd;
+$color-scale-blue-5: #1f6feb;
+$color-scale-blue-6: #1158c7;
+$color-scale-blue-7: #0d419d;
+$color-scale-blue-8: #0c2d6b;
+$color-scale-blue-9: #051d4d;
+$color-scale-green-0: #aff5b4;
+$color-scale-green-1: #7ee787;
+$color-scale-green-2: #56d364;
+$color-scale-green-3: #3fb950;
+$color-scale-green-4: #2ea043;
+$color-scale-green-5: #238636;
+$color-scale-green-6: #196c2e;
+$color-scale-green-7: #0f5323;
+$color-scale-green-8: #033a16;
+$color-scale-green-9: #04260f;
+$color-scale-yellow-0: #f8e3a1;
+$color-scale-yellow-1: #f2cc60;
+$color-scale-yellow-2: #e3b341;
+$color-scale-yellow-3: #d29922;
+$color-scale-yellow-4: #bb8009;
+$color-scale-yellow-5: #9e6a03;
+$color-scale-yellow-6: #845306;
+$color-scale-yellow-7: #693e00;
+$color-scale-yellow-8: #4b2900;
+$color-scale-yellow-9: #341a00;
+$color-scale-orange-0: #ffdfb6;
+$color-scale-orange-1: #ffac46;
+$color-scale-orange-2: #ffa657;
+$color-scale-orange-3: #f0883e;
+$color-scale-orange-4: #db6d28;
+$color-scale-orange-5: #bd561d;
+$color-scale-orange-6: #9b4215;
+$color-scale-orange-7: #762d0a;
+$color-scale-orange-8: #5a1e02;
+$color-scale-orange-9: #3d1300;
+
+
+
+.all{
+  overflow-x: hidden;
+  .main{
+    background-color: $primary-sea-green-2-5;
+    height: 85vh;
+    .upload-form{
+      .toprow{
+        padding: 1vw 4vw;
+        font-weight: 100;
+        color: rgba(0,0,0,0.4);
+        font-size: 1.3vw;
+      }
+      .main-box{
+        padding: 4vw;
+        form{
+          display: flex;
+          gap: 6vw;
+          .text-fields{
+            width: 35vw;
+            input{
+              border-radius: 0.6vw;
+              width: 35vw;
+              border: none;
+              padding: 0.4vw 0.7vw;
+            }
+            .invalid{
+              height: 0.3vw;
+              color: rgba(255,0,0,0.5);
+              margin-bottom: 2vw;
+              margin-top: 0.2vw;
+              font-weight: 100;
+            }
+          }
+
+          .mapandbutton{
+            display: flex;
+            flex-direction: column;
+            gap: 3vw;
+            .map{
+              width: 50vw;
+              height: 22vw;
+              border-radius: 0.6vw;
+            }
+            button:disabled{
+              background-color: $color-scale-gray-7;
+              color:$color-scale-gray-4;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              cursor: not-allowed;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+          }
+          
+          button{
+              width: 25vw;
+              background-color: $color-scale-gray-7;
+              color:$color-scale-gray-1;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: none;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+          }
+          
+          button:disabled:hover{
+              background-color: $color-scale-gray-7;
+              color: $color-scale-gray-4;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              cursor: not-allowed;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+          }
+          
+          button:hover{
+              background-color: $color-scale-gray-6;
+              color:white;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+              cursor: pointer;
+              
+          }
+          
+          }
+
+        }
+      }
+    }
+  }
 }
+

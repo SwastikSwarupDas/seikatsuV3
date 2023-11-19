@@ -1,31 +1,80 @@
 <div class="all">
     <app-navbar></app-navbar>
         <div class="main">
-           <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-            <!-- //*ngIf="(isAuthenticated$|async)" -->
-            <input id="image" type="file" (change)="handleFileInput($event)" formControlName="images" placeholder="Upload Image">
-            <span *ngIf="uploadForm.get('image')?.invalid && uploadForm.get('image')?.touched">Upload an Image</span>
+            <!-- *ngIf="(isAuthenticated$|async)" -->
+           
+           <div class="upload-form">
+            <div class="toprow">
+                Property Details
+            </div>
+            <div class="main-box">
+
+                <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+                    <div class="text-fields">
+                                            <div class="mb-3">
+                                               
+                                            <input class="form-control" (change)="handleFileInput($event)" type="file" id="image" formControlName="images">
+                                            </div>
+                        
+                                            <div class="invalid">
+                                            <span *ngIf="uploadForm.get('image')?.invalid && uploadForm.get('image')?.touched">Upload an Image</span>
+                                            </div>
+                        
+                        
+                                            <input id="propertyName" type="text" formControlName="propertyName" placeholder="Property Name">
+                                            
+                                            <div class="invalid">
+                        
+                                                <span *ngIf="uploadForm.get('propertyName')?.invalid && uploadForm.get('propertyName')?.touched">Enter Valid Property Name</span>
+                                            </div>
+                                
+                                
+                                            <input id="locationName" type="text" formControlName="locationName" placeholder="Location Name">
+                                            
+                                            
+                                            <div class="invalid">
+                                                
+                                                <span *ngIf="uploadForm.get('locationName')?.invalid && uploadForm.get('locationName')?.touched">Enter Valid Location Name</span>
+                                            </div>
+                                
+                                            <input id="locationDescription" type="text" formControlName="locationDescription" placeholder="Location Description">
+                                            
+                                            
+                                            <div class="invalid">
+                                                
+                                                <span *ngIf="uploadForm.get('locationDescription')?.invalid && uploadForm.get('locationDescription')?.touched">Enter a Location Description</span>
+                                            </div>
+                                            
+                                            <input id="sku" type="text" formControlName="sku" placeholder="Enter SKU">
+                                            
+                                            
+                                            <div class="invalid">
+                                                
+                                                <span *ngIf="uploadForm.get('sku')?.invalid && uploadForm.get('sku')?.touched">Enter Valid SKU</span>
+                                            </div>
+                                          
+                                            <input id="price" type="text" formControlName="price" placeholder="Approximate Starting Price">
+                                            
+                                            
+                                            <div class="invalid">
+                                                
+                                                <span *ngIf="uploadForm.get('price')?.invalid && uploadForm.get('price')?.touched">Enter a approximate starting price</span>
+                                            </div>
+                    </div>
+        
+                    <div class="mapandbutton">
+                                    <div #map class="map"></div>
+                                    <button [disabled]="uploadForm.invalid">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+           </div>
+           
+           
+           
             
-            <input id="propertyName" type="text" formControlName="propertyName" placeholder="Property Name">
-            <span *ngIf="uploadForm.get('propertyName')?.invalid && uploadForm.get('propertyName')?.touched">Enter Valid Property Name</span>
-
-
-            <input id="locationName" type="text" formControlName="locationName" placeholder="Location Name">
-            <span *ngIf="uploadForm.get('locationName')?.invalid && uploadForm.get('locationName')?.touched">Enter Valid Location Name</span>
-
-            <input id="locationDescription" type="text" formControlName="locationDescription" placeholder="Location Description">
-            <span *ngIf="uploadForm.get('locationDescription')?.invalid && uploadForm.get('locationDescription')?.touched">Enter a Location Description</span>
-            
-            <input id="sku" type="text" formControlName="sku" placeholder="Enter SKU">
-            <span *ngIf="uploadForm.get('sku')?.invalid && uploadForm.get('sku')?.touched">Enter Valid SKU</span>
-          
-            <input id="price" type="text" formControlName="price" placeholder="Approximate Starting Price">
-            <span *ngIf="uploadForm.get('price')?.invalid && uploadForm.get('price')?.touched">Enter a approximate starting price</span>
-
-            <div #map class="map"></div>
-
-            <button [disabled]="uploadForm.invalid">Submit</button>
-        </form>
         </div>
     <app-footer></app-footer>
 </div>

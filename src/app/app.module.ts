@@ -21,6 +21,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatRippleModule} from '@angular/material/core';
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { UploadpropertyformComponent } from './components/uploadpropertyform/uploadpropertyform.component';
+import { DockModule } from 'primeng/dock';
+import { NotifsComponent } from './components/notifs/notifs.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 
@@ -34,7 +37,8 @@ import { UploadpropertyformComponent } from './components/uploadpropertyform/upl
     MapComponent,
     OldUserLoginComponent,
     YourAccountComponent,
-    UploadpropertyformComponent
+    UploadpropertyformComponent,
+    NotifsComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -47,7 +51,9 @@ import { UploadpropertyformComponent } from './components/uploadpropertyform/upl
     MatSelectModule,
     ReactiveFormsModule,
     BrowserModule,
+    FileUploadModule,
     AppRoutingModule,
+    DockModule,
     BrowserAnimationsModule,
     HttpClientModule,
   ],

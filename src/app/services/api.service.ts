@@ -32,7 +32,7 @@ export interface user {
 }
 
 export interface Properties {
-  _id: string; // replace 'any' with the actual type
+  id: string; // replace 'any' with the actual type
   images: string[]; // replace 'any' with the actual type
   locationName: string;
   locationDescription: string;
@@ -105,5 +105,7 @@ export class ApiService {
     const hashedEnteredPassword = this.passwordHashService.hashPassword(enteredPassword);
     return hashedEnteredPassword === hashedPassword;
   }
+
+  
 
 }

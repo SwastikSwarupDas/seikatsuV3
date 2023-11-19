@@ -1,9 +1,17 @@
 <div class="all">
   <app-navbar></app-navbar>
   <div class="main">
+
+    <div class="search-stuff">
+      <form [formGroup]="fg">
+        <input placeholder="Looking for something ?" formControlName="fc">
+        <button (click)="sortPropertiesByPriceAsc()">Budget Low to High</button>
+        <button (click)="sortPropertiesByPriceDesc()">Budget High to Low</button>
+      </form>
+    </div>
    
     <div *ngIf="!loaded" class="property-display">
-      <div class="property" *ngFor="let number of [0,1,2,3]">
+      <div class="property"  *ngFor="let number of [0,1,2,3]">
         <div class="img-holder">
           <div class="loader-Image placeholder-glow">
             <img class="placeholder" src="../../../assets/LoaderLogo.png" alt="placeholder image" />
@@ -28,7 +36,7 @@
       </div>
 
       <div *ngIf="loaded" class="property-display">
-        <div *ngFor="let property of properties" class="property">
+        <div *ngFor="let property of filteredProperties" class="property" routerLink="/details/{{property.id}}">
           <div class="img-holder" *ngFor="let image of property.images">
             <img [src]="image" alt="{{ property.propertyName }} image" />
           </div>
@@ -43,7 +51,22 @@
           </div>
         </div>
       </div>
-  
-    <app-footer></app-footer>
+      
+      <div class="cities">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">Hyderabad</label>
+        
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">Bangalore</label>
+        
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio3">Bhubaneshwar</label>
+        </div>
+      </div>
+
+      <div #map class="map"></div>
+    
   </div>
+  <app-footer></app-footer>
 </div>

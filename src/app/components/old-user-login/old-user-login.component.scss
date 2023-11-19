@@ -61,12 +61,15 @@ $color-scale-orange-8: #5a1e02;
 $color-scale-orange-9: #3d1300;
 
 .all{
+    overflow-x: hidden;
     .main{
+        height: 82vh;
         background-color: $primary-sea-green-3;
         padding: 3vw;
         display: flex;
         flex-direction: column;
         gap: 3vw;
+        align-items: center;
         .tell{
             font-size: 4vw;
             color: $color-scale-gray-6;
@@ -77,7 +80,7 @@ $color-scale-orange-9: #3d1300;
             form{
                 display: flex;
                 flex-direction: column;
-                input{
+                input{ 
                     caret-color: #010409;
                     width: 25vw;
                     border: none;

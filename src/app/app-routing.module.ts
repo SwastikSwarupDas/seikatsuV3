@@ -7,6 +7,8 @@ import { OldUserLoginComponent } from './components/old-user-login/old-user-logi
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { UploadpropertyformComponent } from './components/uploadpropertyform/uploadpropertyform.component';
 import { NotifsComponent } from './components/notifs/notifs.component';
+import { PropertyDetailsComponent } from './components/property-details/property-details.component';
+import { ElitesComponent } from './components/elites/elites.component';
 
 
 const routes: Routes = [
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path:"notifs",
     component:NotifsComponent
+  },
+  {
+    path:"details/:id",
+    component:PropertyDetailsComponent
+  },
+  {
+    path:"elites",
+    component:ElitesComponent
   }
 ];
 

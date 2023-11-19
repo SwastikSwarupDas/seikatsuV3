@@ -7,18 +7,64 @@ $primary-sea-green-5 : rgb(23, 207, 151);
 $primary-sea-green-6 : rgb(21, 172, 127);
 $primary-sea-green-7 : rgb(10, 109, 79);
 $primary-sea-green-8 : rgb(2, 69, 49);
-
+$color-scale-black: #010409;
+$color-scale-white: #ffffff;
+$color-scale-gray-0: #f0f6fc;
+$color-scale-gray-1: #c9d1d9;
+$color-scale-gray-2: #b1bac4;
+$color-scale-gray-3: #8b949e;
+$color-scale-gray-4: #6e7681;
+$color-scale-gray-5: #484f58;
+$color-scale-gray-6: #30363d;
+$color-scale-gray-7: #21262d;
+$color-scale-gray-8: #161b22;
+$color-scale-gray-9: #0d1117;
 
 
 
 .all{
     background-color: $primary-sea-green-2-5;
+    overflow-x: hidden;
     .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2vw;
+        .search-stuff{
+            display: flex;
+            justify-content: center;
+            padding: 1vw;
+            form{
+                display: flex;
+                gap: 2vw;
+                input{
+                    border: 4px solid white;
+                    background-color: $color-scale-gray-1 ;
+                    border-radius: 1vw;
+                    padding: 0.2vw 1vw;
+                    font-size: 1.4vw;
+                    width: 25vw;
+                }
+                input::placeholder{
+                    color:white;
+                    letter-spacing: 0.08vw;
+                }
+                button{
+                    border: none;
+                    background-color: $primary-sea-green-5;
+                    border-radius: 1vw;
+                    padding: 0 1vw;
+                    color: white;
+                    font-weight: 600;
+                    letter-spacing: 0.1vw;
+                }
+            }
+        }
         .property-display{
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            padding: 4vw;
+            padding: 0vw 4vw 0vw 4vw;
             gap: 3vw;
             .property{
                 border: 4px solid white;
@@ -102,5 +148,28 @@ $primary-sea-green-8 : rgb(2, 69, 49);
                 scale: 1.02;
             }
         }
+        .cities{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .btn-group{
+                background-color: $color-scale-gray-6;
+                border-radius: 1vw;
+                border: 6px solid white;
+                label{
+                    font-size: 1.2vw;
+                    color: white;
+                    border: none;
+                    border-radius: 0.6vw;
+                }
+            }
+        }
+    
+    .map{
+       height: 60vh;
+       width: 90vw; 
+       border-radius: 1vw;
+       border: 4px white solid;
+    }
     }
 }

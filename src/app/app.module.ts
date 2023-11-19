@@ -24,6 +24,8 @@ import { UploadpropertyformComponent } from './components/uploadpropertyform/upl
 import { DockModule } from 'primeng/dock';
 import { NotifsComponent } from './components/notifs/notifs.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PropertyDetailsComponent } from './components/property-details/property-details.component';
+import { ElitesComponent } from './components/elites/elites.component';
 
 
 
@@ -38,7 +40,9 @@ import { FileUploadModule } from 'primeng/fileupload';
     OldUserLoginComponent,
     YourAccountComponent,
     UploadpropertyformComponent,
-    NotifsComponent
+    NotifsComponent,
+    PropertyDetailsComponent,
+    ElitesComponent
   ],
   imports: [
     MatFormFieldModule,

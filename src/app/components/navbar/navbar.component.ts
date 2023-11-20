@@ -1,7 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { ApiService, Notifs } from 'src/app/services/api.service';
+import { ApiService, Notifs, user } from 'src/app/services/api.service';
+import { JsonPipe } from '@angular/common';
 
 
 @Component({
@@ -14,13 +15,29 @@ export class NavbarComponent {
   username$: Observable<string> = this.authService.getUsername();
   userType$: Observable<string> = this.authService.getUserType();
 
+  user: user={
+    _id: '',
+    username: '',
+    password: '',
+    email: '',
+    usertype: '',
+    propertyIds: []
+  };
+
   notifs : Notifs[] = [];
+
+  isAuthenticated: boolean = false;
   
   constructor(private authService:AuthService, private apiService:ApiService){
-
+    if(localStorage.getItem('loggedin')){
+      this.isAuthenticated = true;
+      // if(localStorage.getItem('loggedin')!=undefined)
+      this.user = JSON.parse(localStorage.getItem('loggedin')!);
+    }
   }
 
   ngOnInit(){
+    // this.isAuthenticated = localStorage.getItem('loggedin');
     this.fetchNotifications();
   }
 
@@ -32,5 +49,6 @@ export class NavbarComponent {
 
   logout(){
     this.authService.logout();
+    localStorage.removeItem('loggedin');
   }
 }

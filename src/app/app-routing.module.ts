@@ -9,6 +9,8 @@ import { UploadpropertyformComponent } from './components/uploadpropertyform/upl
 import { NotifsComponent } from './components/notifs/notifs.component';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 import { ElitesComponent } from './components/elites/elites.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 
 const routes: Routes = [
@@ -16,7 +18,8 @@ const routes: Routes = [
     path:"",component:HomepageComponent
   },
   {
-    path:"map",component:MapComponent
+    path:"map",component:MapComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"register",component:LoginPageComponent
@@ -25,22 +28,27 @@ const routes: Routes = [
     path:"login",component:OldUserLoginComponent
   },
   {
-    path:"acc",component:YourAccountComponent
+    path:"acc",component:YourAccountComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:"upload",component:UploadpropertyformComponent
+    path:"upload",component:UploadpropertyformComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"notifs",
-    component:NotifsComponent
+    component:NotifsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"details/:id",
-    component:PropertyDetailsComponent
+    component:PropertyDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"elites",
-    component:ElitesComponent
+    component:ElitesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

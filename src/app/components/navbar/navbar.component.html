@@ -33,23 +33,23 @@
                     </button>
                 </a>
 
-                <button *ngIf="!(isAuthenticated$ | async)" [matMenuTriggerFor]="menu"><i
+                <button *ngIf="!isAuthenticated" [matMenuTriggerFor]="menu"><i
                         class="ri-user-line"></i></button>
-                <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'buyer'"
+                <button *ngIf="isAuthenticated && user.usertype === 'buyer'"
                     [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
-                <button *ngIf="(isAuthenticated$ | async) && (userType$ | async) === 'seller'"
+                <button *ngIf="isAuthenticated && user.usertype === 'seller'"
                     [matMenuTriggerFor]="menu"><i class="ri-user-line"></i></button>
                 <mat-menu #menu="matMenu" class="custom-menu">
-                    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)">
+                    <button mat-menu-item *ngIf="!isAuthenticated">
                         <a routerLink="/register">
                             Sign Up
                         </a>
                         </button>
-                    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"><a routerLink="/login">Login</a></button>
-                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)">Hello {{ (username$ | async)}} </button>
-                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)"><a routerLink="/acc">Your
+                    <button mat-menu-item *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></button>
+                    <button mat-menu-item *ngIf="isAuthenticated">Hello {{user.username}} </button>
+                    <button mat-menu-item *ngIf="isAuthenticated"><a routerLink="/acc">Your
                             Account</a></button>
-                    <button mat-menu-item *ngIf="(isAuthenticated$ | async)" (click)="logout()">Logout</button>
+                    <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">Logout</button>
                 </mat-menu>
             </div>
         </div>

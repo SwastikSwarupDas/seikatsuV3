@@ -25,19 +25,23 @@ export class YourAccountComponent {
     propertyIds: []
   };
 
-  constructor(private authService: AuthService, private apiService: ApiService) {}
+  constructor(private authService: AuthService, private apiService: ApiService) {
+    if(localStorage.getItem('loggedin')){
+      this.user = JSON.parse(localStorage.getItem('loggedin')!);
+    }
+  }
 
 
 
   ngOnInit() {
-    this.username$.subscribe(username => {
-      console.log(username);
-      this.apiService.getUserByUsername(username).subscribe((user:any) => {
-        console.log(user);
-        this.user = user;
-        console.log(this.user);
-      })
-    });
+    // this.username$.subscribe(username => {
+    //   console.log(username);
+    //   this.apiService.getUserByUsername(username).subscribe((user:any) => {
+    //     console.log(user);
+    //     this.user = user;
+    //     console.log(this.user);
+    //   })
+    // });
     
     this.fetchProperties();
   }

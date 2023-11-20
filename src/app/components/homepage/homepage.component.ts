@@ -38,14 +38,6 @@ export class HomepageComponent {
   }
 
   ngOnInit() {
-    
-    let loggedIn = localStorage.getItem('loggedin');
-    if (!loggedIn) 
-      { 
-        loggedIn = 'guest'; 
-        localStorage.setItem('loggedin', loggedIn); 
-      }
-
     this.fetchProperties();
     this.fg.get('fc')?.valueChanges.subscribe(() => {
       this.search();

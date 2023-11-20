@@ -41,9 +41,11 @@ export class OldUserLoginComponent {
     this.userSubscription = this.apiService.getAllUsers().subscribe((users: user[]) => {
       const user = users.find(u => u.username === enteredUsername);
 
+      localStorage.setItem('loggedin', JSON.stringify(user));
+
       if (user && this.apiService.comparePasswords(enteredPassword, user.password)) {
         console.log('Authentication successful');
-        localStorage.setItem('loggedin', enteredUsername  );
+        // localStorage.setItem('loggedin', enteredUsername  );
         this.authService.loginSuccess(user);
       } else {
         console.log('Authentication Failed');

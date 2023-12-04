@@ -1,114 +1,205 @@
 <div class="all">
   <app-navbar></app-navbar>
   <div class="main">
-    <div class="container">
-      <div class="tell">Tell us somethings about yourself!</div>
+    <div class="anothercontainer">
+      <div class="informationbox">
+        <div class="heading">Things you Can Do with Seikatsu Account</div>
+        <div class="list">
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Post one Single Property for
+            FREE</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Set property alerts for your
+            requirement</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Get accessed by over 1 Lakh
+            buyers</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Showcase your property as
+            Rental, PG or for Sale</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Get instant queries over
+            Phone, Email and SMS</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Performance in search &
+            Track responses & views online</span
+          ><br />
+          <span
+            ><i class="ri-checkbox-circle-fill"></i>Add detailed property
+            information & multiple photos per listing</span
+          >
+        </div>
+      </div>
 
-      <span class="advert-span placeholder-glow">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="inputline">
+      <div class="container">
+        <div class="tell">Tell us somethings about yourself!</div>
+
+        <span class="advert-span placeholder-glow">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <input
-              id="username"
-              type="text"
-              formControlName="username"
-              placeholder="Name"
+              class="form-control"
+              (change)="handleFileInput($event)"
+              type="file"
+              id="image"
+              formControlName="images"
+              hidden
             />
-            <span *ngIf="failed">
-              <i class="ri-error-warning-line"></i> Username Taken
-            </span>
-          </div>
+            <label for="image" class="uploadlabel">
+              <i class="ri-upload-cloud-2-fill"></i>
+              Choose Profile Picture
+            </label>
 
-          <div class="invalid">
-            <span
-              *ngIf="
-                loginForm.get('username')?.invalid &&
-                loginForm.get('username')?.touched
-              "
-              >Enter a Valid Username</span
-            >
-          </div>
+            <div class="filewrapper">
+              <div
+                class="showfilebox"
+                *ngFor="let uploadedFile of uploadedFiles; let i = index"
+              >
+                <div>
+                  <div class="filename">
+                    {{ uploadedFile.name.substring(0, 5) }}.png
+                  </div>
+                </div>
+                <div class="right">
+                  <span (click)="removeUploadedFile(i)">&#215;</span>
+                </div>
+              </div>
+            </div>
 
-          <input
+            <div class="invalid">
+              <span
+                *ngIf="
+                  loginForm.get('image')?.invalid &&
+                  loginForm.get('image')?.touched
+                "
+                >Upload an Image</span
+              >
+            </div>
+
+            <div class="inputline">
+              <input
+                id="username"
+                type="text"
+                formControlName="username"
+                placeholder="Name"
+              />
+              <span *ngIf="failed">
+                <i class="ri-error-warning-line"></i> Username Taken
+              </span>
+            </div>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  loginForm.get('username')?.invalid &&
+                  loginForm.get('username')?.touched
+                "
+                >Enter a Valid Username</span
+              >
+            </div>
+
+            <!-- <input
             id="password"
             type="password"
             formControlName="password"
             placeholder="Password"
-          />
+          /> -->
 
-          <div class="invalid">
-            <span
-              *ngIf="
-                loginForm.get('password')?.invalid &&
-                loginForm.get('password')?.touched
-              "
-              >Enter A Valid Password</span
+            <p-password
+              formControlName="password"
+              id="password"
+              placeholder="Password"
+              [toggleMask]="true"
             >
-          </div>
+            <ng-template pTemplate="header">
+              <h6>Pick a password</h6>
+          </ng-template>
+          <ng-template pTemplate="footer">
+              
+              <p class="mt-2">Suggestions</p>
+              <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                  <li>At least one lowercase</li>
+                  <li>At least one uppercase</li>
+                  <li>At least one numeric</li>
+                  <li>Minimum 8 characters</li>
+              </ul>
+          </ng-template>
+          </p-password>
 
-          <input
-            id="email"
-            type="text"
-            formControlName="email"
-            placeholder="Email"
-          />
+            <div class="invalid">
+              <span
+                *ngIf="
+                  loginForm.get('password')?.invalid &&
+                  loginForm.get('password')?.touched
+                "
+                >Enter A Valid Password</span
+              >
+            </div>
 
-          <div class="invalid">
-            <span
-              *ngIf="
-                loginForm.get('email')?.invalid &&
-                loginForm.get('email')?.touched
-              "
-              >Enter a Valid Email</span
+            <input
+              id="email"
+              type="text"
+              formControlName="email"
+              placeholder="Email"
+            />
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  loginForm.get('email')?.invalid &&
+                  loginForm.get('email')?.touched
+                "
+                >Enter a Valid Email</span
+              >
+            </div>
+
+            <!-- Dropdown Select for USER TYPE -->
+
+            <mat-chip-listbox
+              formControlName="usertype"
+              aria-label="usertype selection"
+              required
             >
-          </div>
+              <mat-chip-option value="buyer">I'm a Buyer</mat-chip-option>
+              <mat-chip-option value="seller">I'm a seller</mat-chip-option>
+            </mat-chip-listbox>
 
-          <!-- Dropdown Select for USER TYPE -->
+            <div class="invalid">
+              <span
+                *ngIf="
+                  loginForm.get('usertype')?.invalid &&
+                  loginForm.get('usertype')?.touched
+                "
+                >Select ONE Option</span
+              >
+            </div>
 
-          <mat-chip-listbox
-            formControlName="usertype"
-            aria-label="usertype selection"
-            required
-          >
-            <mat-chip-option value="buyer">I'm a Buyer</mat-chip-option>
-            <mat-chip-option value="seller">I'm a seller</mat-chip-option>
-          </mat-chip-listbox>
+            <button class="register" [disabled]="loginForm.invalid">
+              REGISTER
+            </button>
+          </form>
 
-          <div class="invalid">
-            <span
-              *ngIf="
-                loginForm.get('usertype')?.invalid &&
-                loginForm.get('usertype')?.touched
-              "
-              >Select ONE Option</span
-            >
-          </div>
-
-          <button class="register" [disabled]="loginForm.invalid">REGISTER</button>
-        </form>
-
-        <div *ngIf="!loaded" class="advert placeholder ">
+          <div *ngIf="!loaded" class="advert placeholder">
             <div class="logo"><i class="ri-vip-crown-line"></i></div>
             <div class="text"></div>
-        </div>
-        <div *ngIf="loaded" class="advert">
+          </div>
+          <div *ngIf="loaded" class="advert">
             <div class="logo"><i class="ri-vip-crown-line"></i></div>
             <div class="text">
-                <ul>
-                    <li>
-                        Be part of the seikatsu elite club for $170/month
-                    </li>
-                    <li>
-                        Save Time and indulge in Luxury
-                    </li>
-                    <li>
-                        Enjoy special Elite Lounge Access
-                    </li>
-                </ul>
+              <ul>
+                <li>Be part of the seikatsu elite club for $170/month</li>
+                <li>Save Time and indulge in Luxury</li>
+                <li>Enjoy special Elite Lounge Access</li>
+              </ul>
             </div>
             <button class="register">seikatsu elite</button>
-        </div>
-
-      </span>
+          </div>
+        </span>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

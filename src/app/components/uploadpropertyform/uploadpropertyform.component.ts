@@ -38,7 +38,8 @@ export class UploadpropertyformComponent {
   uploadForm!:FormGroup;
   base64Image!: string;
   user: user={
-    _id: '',
+    images:[],
+    id: '',
     username: '',
     password: '',
     email: '',
@@ -54,23 +55,26 @@ export class UploadpropertyformComponent {
       propertyName:["",Validators.required],
       locationName:["",Validators.required],
       locationDescription:["",Validators.required],
+      propertyType:["",Validators.required],
+      bhk:["",Validators.required],
+      zeroBrokerage:["",Validators.required],
+      reraApproved:["",Validators.required],
+      squareFoot:["",Validators.required],
+      bathrooms:["",Validators.required],
+      carParking:["",Validators.required],
+      furnishing:["",Validators.required],
       sku:["",Validators.required],
       price:["",Validators.required]
     });
   }
 
-  username$: Observable<string> = this.authService.getUsername();
 
   ngOnInit(){
 
-    this.username$.subscribe(username => {
-      console.log(username);
-      this.apiService.getUserByUsername(username).subscribe((user:any) => {
-        console.log(user);
-        this.user = user;
-        console.log(this.user);
-      })
-    }); 
+    if(localStorage.getItem('loggedin')){
+      this.user = JSON.parse(localStorage.getItem('loggedin')!);
+  }
+
   }
 
   ngAfterViewInit(){
@@ -224,7 +228,7 @@ export class UploadpropertyformComponent {
     this.router.navigate(['']);
   }
 
-
+  uploadedFiles: File[] = [];
 
   handleFileInput(event: any) {
     const files: FileList = event.target.files;
@@ -233,11 +237,15 @@ export class UploadpropertyformComponent {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.base64Image = e.target.result;
+        this.uploadedFiles.push(file);
       };
       reader.readAsDataURL(file);
     }
   }
 
-
+  removeUploadedFile(index: number) {
+    this.uploadedFiles.splice(index, 1);
+  }
+  
 
 }

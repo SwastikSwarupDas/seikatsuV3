@@ -8,6 +8,10 @@ $primary-sea-green-6 : rgb(21, 172, 127);
 $primary-sea-green-7 : rgb(10, 109, 79);
 $primary-sea-green-8 : rgb(2, 69, 49);
 
+$creme: #FFF5EA;
+$cold-steel : #F8F7F4;
+$colder-steel : #f2f1ee;
+
 $color-scale-black: #010409;
 $color-scale-white: #ffffff;
 $color-scale-gray-0: #f0f6fc;
@@ -64,25 +68,26 @@ $color-scale-orange-9: #3d1300;
 
 
 .all{
-    position: sticky;
-    top: 0;
-    z-index: 4;
+    position: fixed;
+    width: 100vw;
+    z-index: 6;
     .second-row{
         display: flex;
         justify-content: center;
         gap: 4vw;
-        background-color: $primary-sea-green-2;
+        background-color: transparent;
+        backdrop-filter: brightness(20%) blur(10px);
         padding: 0.3vw;
         a{
             font-weight: 100;
             letter-spacing: 0.08vw;
             text-decoration: none;
-            color: $color-scale-gray-3;
+            color: $color-scale-gray-4;
             transition: color 0.2s ease-out;
         }
 
         a:hover{
-            color: $primary-sea-green-4;
+            color: $cold-steel;
         }
     }
     .main{
@@ -90,7 +95,8 @@ $color-scale-orange-9: #3d1300;
         align-items: center;
         justify-content: space-between;
         padding: 0 4vw;
-        background-color: $primary-sea-green-2;
+        background: transparent;
+        backdrop-filter: brightness(25%) blur(10px);
         .hero{
             display: flex;
             align-items: center;
@@ -100,7 +106,7 @@ $color-scale-orange-9: #3d1300;
             }
             svg{
                 path{
-                    fill: $primary-sea-green-5;
+                    fill: $cold-steel;
                 }
             }
             .text{
@@ -109,13 +115,13 @@ $color-scale-orange-9: #3d1300;
                 gap: 0.8vw;
                 font-size: 3vw;
                 letter-spacing: 0.1vw;
-                font-family: gabarito;
-                color: $primary-sea-green-5;
+                font-family: 'SF-Pro';
+                color: $cold-steel;
                 font-weight: 800;
                 .houseofsagano{
                     margin-top: 1vw;
                     font-size: 1.4vw;
-                    color: $color-scale-gray-1;
+                    color: $color-scale-gray-3;
                 }
             }
         }
@@ -127,14 +133,29 @@ $color-scale-orange-9: #3d1300;
                     border:none;
                     font-weight: 100;
                     font-size: 1.5vw;
-                    color: $primary-sea-green-5;
+                    color: $cold-steel;
                     padding: 0.3vw 0.6vw;
-                    background-color: $color-scale-gray-0; 
+                    background-color: $color-scale-gray-5; 
                     transition: color 0.2s ease-out,background-color 0.2s ease-out;     
                 }
                 button:hover{
                     color: white;
-                    background-color: $primary-sea-green-4;
+                    background-color: $color-scale-gray-3;
+                }
+                .postproperty{
+                    font-size: 1vw;
+                    background-color: white;
+                    color: $color-scale-gray-5;
+                    border: 2px solid $color-scale-gray-6;
+                    span{
+                        span{
+                            color: $color-scale-gray-0;
+                            background-color: rgb(233, 97, 124);
+                            padding: 0.1vw 0.6vw;
+                            margin-left: 0.4vw;
+                            border-radius: 0.8vw;
+                        }
+                    }
                 }
               
             }
@@ -143,14 +164,15 @@ $color-scale-orange-9: #3d1300;
 }
 
 ::ng-deep .mat-mdc-menu-panel{
-    border-radius: 3vw;
-    background-color: $primary-sea-green-3 !important;
+    border-radius: 0.4vw;
+    background-color: transparent !important;
+    backdrop-filter: blur(10px) brightness(60%);
 }
 
 ::ng-deep .mat-mdc-elevation-specific.mat-elevation-z8{
-    border-radius: 1.2vw;
+    border-radius: 0.4vw;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.144) !important;
-    border: 5px solid white;
+    border: 1.2px solid white;
 }
 
 ::ng-deep .cdk-overlay-pane{
@@ -158,12 +180,13 @@ $color-scale-orange-9: #3d1300;
 }
 
 ::ng-deep .mat-mdc-menu-item-text{
+    color: $color-scale-white;
     a{
+        color: $color-scale-white;
         text-decoration: none;
-        color: $primary-sea-green-5;
-        font-family: "Gabarito";
+        font-family: "SF-Pro";
         font-weight: 600;
-        font-size: 1.4vw;
+        font-size: 1.2vw;
         transition: color 0.2s;
     }
 

@@ -1,2 +1,159 @@
-<p>property-details works!</p>
-<p>Name:-{{property[0].propertyName}}</p>
+<div class="all">
+    <app-navbar></app-navbar>
+    <div class="main">
+        
+        <div *ngIf="!loaded" class="product-display">
+            <div class="left placeholder-glow">
+                <div class="img-holder placeholder">
+                    <img src="" alt="">
+                </div>
+                <div class="text-container placeholder-glow">
+                    <p class="title placeholder"></p>
+                    <div class="second-title placeholder">
+                        <p class="org placeholder">
+                            
+                        </p>
+                        <p class="location"></p>
+                    </div>
+                    <p class="desc placeholder"></p>
+                    <p class="sku placeholder"></p>
+                    <p class="price placeholder">
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div *ngIf="loaded" class="product-display">
+            <div class="left">
+                <div class="img-holder">
+                    <img src="{{property[0].images}}" alt="">
+                </div>
+                <div class="text-container">
+                    <div class="title">{{property[0].propertyName}}</div>
+                    <div class="tags">
+                        <div *ngIf="property[0].zeroBrokerage==='Yes'" class="zero">Zero Brokerage <i class="ri-checkbox-circle-fill"></i></div>
+                        <div *ngIf="property[0].reraApproved==='Yes'" class="zero">RERA Approved<i class="ri-checkbox-circle-fill"></i></div>
+                    </div>
+                    <div class="second-title">
+                        <p class="org">Marketed by
+                            {{property[0].userIds}}
+                        </p>
+                        <p class="location"><i class="ri-map-pin-line"></i>{{property[0].locationName}}</p>
+                    </div>
+                    <p class="desc">{{property[0].locationDescription.substring(0,780)}} ...</p>
+                    <p class="sku">PROPERTY SKU : {{property[0].sku}}</p>
+                    <p class="price">
+                        <span>
+                        $ {{property[0].price}}
+                        </span>
+                    </p>
+                    <div *ngIf="user.usertype==='buyer'" 
+                    style="cursor: pointer;" class="price" (click)="printPage()">
+                        <span>
+                            GET QUOTATION
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toprow">
+            DETAILS
+        </div>
+        <div class="details">
+            <div class="box">
+                <span>Property Type</span>
+                <hr>
+                <span>{{property[0].propertyType}}</span>
+            </div>
+            <div class="box">
+                <span>Bedrooms</span>
+                <hr>
+                <span>{{property[0].bhk}}</span>
+            </div>
+            <div class="box">
+                <span>Sq.Ft.</span>
+                <hr>
+                <span>{{property[0].squareFoot}}</span>
+            </div>
+            <div class="box">
+                <span>Bathrooms</span>
+                <hr>
+                <span>{{property[0].bathrooms}}</span>
+            </div>
+            <div class="box">
+                <span>Car Parking</span>
+                <hr>
+                <span>{{property[0].carParking}}</span>
+            </div>
+            <div class="box">
+                <span>Furnishing</span>
+                <hr>
+                <span>{{property[0].furnishing}}</span>
+            </div>
+            
+        </div>
+    
+        <div class="toprow">
+            LOCATION
+        </div>
+        <div class="map-wrapper">
+            <div #map class="map"></div> 
+        </div>
+
+        <div class="toprow">
+            EMI CALCULATOR
+        </div>
+
+        <div class="toprow">
+            SELECT MONTHS
+        </div>
+
+        <div class="slider">
+            <div class="card flex justify-content-center">
+                <div>
+                    <input type="text" pInputText [(ngModel)]="value" class="w-full"/>
+                    <p-slider [(ngModel)]="value" (onSlideEnd)="onSliderChange($event)" class="w-full"></p-slider>
+                </div>
+            </div>
+            <div class="emi">
+                Monthly Installment : $ {{ emi | number:'1.2-2' }}
+            </div>
+        </div>
+
+        <div class="toprow">
+            PROPERTY LISTINGS
+        </div>
+        <div class="p-dis">
+            <div *ngFor="let property of properties;let i=index" class="property">
+                <div *ngIf="i<4">
+                    <div class="img-holder" *ngFor="let image of property.images">
+                        <img [src]="image" alt="{{ property.propertyName }} image" />
+                      </div>
+                      <div class="info">
+                        <div class="uploader-img">
+                          <i class="ri-user-3-line"></i>
+                        </div>
+                        <div class="right">
+                          <div class="property-title">{{ property.propertyName }}</div>
+                          <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
+

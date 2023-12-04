@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PasswordModule } from 'primeng/password';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { MapComponent } from './components/map/map.component';
@@ -23,9 +24,17 @@ import { YourAccountComponent } from './components/your-account/your-account.com
 import { UploadpropertyformComponent } from './components/uploadpropertyform/uploadpropertyform.component';
 import { DockModule } from 'primeng/dock';
 import { NotifsComponent } from './components/notifs/notifs.component';
+import { ToastModule } from 'primeng/toast';
+import { SliderModule } from 'primeng/slider';
 import { FileUploadModule } from 'primeng/fileupload';
 import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 import { ElitesComponent } from './components/elites/elites.component';
+import { SendComponent } from './components/messaging/send/send.component';
+import { ReceivedComponent } from './components/messaging/received/received.component';
+import { ReportsComponent } from './components/messaging/reports/reports.component';
+import { NotifSidebarComponent } from './components/notif-sidebar/notif-sidebar.component';
+import { NewmsgComponent } from './components/messaging/newmsg/newmsg.component';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -42,17 +51,26 @@ import { ElitesComponent } from './components/elites/elites.component';
     UploadpropertyformComponent,
     NotifsComponent,
     PropertyDetailsComponent,
-    ElitesComponent
+    ElitesComponent,
+    SendComponent,
+    ReceivedComponent,
+    ReportsComponent,
+    NotifSidebarComponent,
+    NewmsgComponent
   ],
   imports: [
     MatFormFieldModule,
     MatInputModule,
+    PasswordModule,
+    ToastModule,
+    SliderModule,
     FormsModule,
     MatMenuModule,
     MatButtonModule,
     MatRippleModule,
     MatChipsModule,
     MatSelectModule,
+    CarouselModule,
     ReactiveFormsModule,
     BrowserModule,
     FileUploadModule,

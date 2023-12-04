@@ -1,0 +1,49 @@
+<div class="all">
+    <app-navbar></app-navbar>
+    <div class="main">
+        <app-notif-sidebar></app-notif-sidebar>
+        <div class="form-window">
+            <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+                <div class="text-fields">
+                                     
+
+                                        <input id="receiverName" type="text" formControlName="receiverName" placeholder="Enter Receiver Name">
+                                        
+                                        <div class="invalid">
+                    
+                                            <span *ngIf="uploadForm.get('receiverName')?.invalid && uploadForm.get('receiverName')?.touched">Enter Valid Receiver Name</span>
+                                        </div>
+                            
+                            
+                                        <input id="message" type="text" formControlName="message" placeholder="Enter your message">
+                                        
+                                        
+                                        <div class="invalid">
+                                            
+                                            <span *ngIf="uploadForm.get('message')?.invalid && uploadForm.get('message')?.touched">Enter Some Message</span>
+                                        </div>
+                            
+                                        <input id="messageType" type="text" formControlName="messageType" placeholder="messageType" readonly>
+                                        
+                                        
+                                        <div class="invalid">
+                                            
+                                            <span *ngIf="uploadForm.get('messageType')?.invalid && uploadForm.get('messageType')?.touched">Enter Message Type</span>
+                                        </div>
+                                        
+                                        <input id="time" type="text" formControlName="time" placeholder="Current Time" readonly>
+                                        
+                                        
+                                        <div class="invalid">
+                                            
+                                            <span *ngIf="uploadForm.get('time')?.invalid && uploadForm.get('time')?.touched">Enter a Valid Time</span>
+                                        </div>
+
+                </div>
+                <button [disabled]="uploadForm.invalid">Submit</button>
+                </form>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -9,13 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./notifs.component.scss']
 })
 export class NotifsComponent {
-  isAuthenticated$: Observable<boolean> = this.authService.isAuthenticatedUser();
 
-  notifs : Notifs[] = [];
-  constructor(private apiService:ApiService, private authService:AuthService){}
-  username$: Observable<string> = this.authService.getUsername();
   user: user={
-    _id: '',
+    images:[],
+    id: '',
     username: '',
     password: '',
     email: '',
@@ -23,28 +20,14 @@ export class NotifsComponent {
     propertyIds: []
   };
 
-  ngOnInit(){
+  
 
-    this.username$.subscribe(username => {
-      console.log(username);
-      this.apiService.getUserByUsername(username).subscribe((user:any) => {
-        console.log(user);
-        this.user = user;
-        console.log(this.user);
-      })
-    });
-
-    this.fetchNotifications();
+  notifs : Notifs[] = [];
+  constructor(private apiService:ApiService, private authService:AuthService){
+    if(localStorage.getItem('loggedin')){
+      this.user = JSON.parse(localStorage.getItem('loggedin')!);
   }
+}
 
-  fetchNotifications(){
-    this.apiService.getAllNotifs().subscribe(notifications =>{
-      const filteredNotifications = notifications.filter(notification =>{
-        return notification.receiverName === this.user.username;
-      });
-      this.notifs = filteredNotifications;
-
-    })
-  }
 
 }

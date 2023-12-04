@@ -1,80 +1,453 @@
 <div class="all">
-    <app-navbar></app-navbar>
-        <div class="main">
-            <!-- *ngIf="(isAuthenticated$|async)" -->
-           
-           <div class="upload-form">
-            <div class="toprow">
-                Property Details
+  <app-navbar></app-navbar>
+  <div class="main">
+    <!-- *ngIf="(isAuthenticated$|async)" -->
+
+    <div class="upload-form">
+      <div class="toprow"><a routerLink="">Home</a>> Post Property</div>
+      <div class="another-main-box">
+        <div class="postinghelp">
+          <div class="postad">
+            <div class="img">
+              <img src="../../../assets/PostPropertyPicture.avif" alt="" />
             </div>
-            <div class="main-box">
-
-                <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-
-                    <div class="text-fields">
-                                            <div class="mb-3">
-                                               
-                                            <input class="form-control" (change)="handleFileInput($event)" type="file" id="image" formControlName="images">
-                                            </div>
-                        
-                                            <div class="invalid">
-                                            <span *ngIf="uploadForm.get('image')?.invalid && uploadForm.get('image')?.touched">Upload an Image</span>
-                                            </div>
-                        
-                        
-                                            <input id="propertyName" type="text" formControlName="propertyName" placeholder="Property Name">
-                                            
-                                            <div class="invalid">
-                        
-                                                <span *ngIf="uploadForm.get('propertyName')?.invalid && uploadForm.get('propertyName')?.touched">Enter Valid Property Name</span>
-                                            </div>
-                                
-                                
-                                            <input id="locationName" type="text" formControlName="locationName" placeholder="Location Name">
-                                            
-                                            
-                                            <div class="invalid">
-                                                
-                                                <span *ngIf="uploadForm.get('locationName')?.invalid && uploadForm.get('locationName')?.touched">Enter Valid Location Name</span>
-                                            </div>
-                                
-                                            <input id="locationDescription" type="text" formControlName="locationDescription" placeholder="Location Description">
-                                            
-                                            
-                                            <div class="invalid">
-                                                
-                                                <span *ngIf="uploadForm.get('locationDescription')?.invalid && uploadForm.get('locationDescription')?.touched">Enter a Location Description</span>
-                                            </div>
-                                            
-                                            <input id="sku" type="text" formControlName="sku" placeholder="Enter SKU">
-                                            
-                                            
-                                            <div class="invalid">
-                                                
-                                                <span *ngIf="uploadForm.get('sku')?.invalid && uploadForm.get('sku')?.touched">Enter Valid SKU</span>
-                                            </div>
-                                          
-                                            <input id="price" type="text" formControlName="price" placeholder="Approximate Starting Price">
-                                            
-                                            
-                                            <div class="invalid">
-                                                
-                                                <span *ngIf="uploadForm.get('price')?.invalid && uploadForm.get('price')?.touched">Enter a approximate starting price</span>
-                                            </div>
-                    </div>
-        
-                    <div class="mapandbutton">
-                                    <div #map class="map"></div>
-                                    <button [disabled]="uploadForm.invalid">Submit</button>
-                    </div>
-                </form>
-
+            <div class="text">
+              <div class="heading">
+                Post property Ad to sell or rent online for <span>Free!</span>
+              </div>
+              <span
+                ><i class="ri-checkbox-circle-fill"></i>Get Access to 4 Lakh +
+                Buyers</span
+              >
+              <span
+                ><i class="ri-checkbox-circle-fill"></i>Sell Faster with Sagano
+                Elite</span
+              >
+              <span
+                ><i class="ri-checkbox-circle-fill"></i>Get Expert Advice on
+                Market Trends and Insights</span
+              >
             </div>
-           </div>
-           
-           
-           
-            
+          </div>
+
+          <div class="howitworks">
+            <div class="title">How it Works</div>
+            <div class="step">
+              <span>Step 1:</span>
+              <div class="steptitle">
+                <i class="ri-upload-cloud-line"></i>Post your Property Ad
+              </div>
+              <div class="stepdetails">
+                Enter all details like locality name, amenities etc. along with
+                uploading Photos
+              </div>
+            </div>
+            <div class="step">
+              <span>Step 2:</span>
+              <div class="steptitle">
+                <i class="ri-dashboard-line"></i>Check Responses on Dashboard
+              </div>
+              <div class="stepdetails">
+                Get access to Buyer/Tenant contact details & connect easily
+              </div>
+            </div>
+            <div class="step">
+              <span>Step 3:</span>
+              <div class="steptitle">
+                <i class="ri-message-3-line"></i>Sell/Rent faster with instant
+                Connect
+              </div>
+              <div class="stepdetails">
+                Negotiate with your prospective Buyer/Tenant & mutually close
+                the deal.(site-visit)
+              </div>
+            </div>
+          </div>
+          <div class="howitworks">
+            <div class="title">Tips on Selling a Property Online</div>
+            <div class="step">
+              <div class="steptitle">
+                <i class="ri-upload-cloud-line"></i>Post your Property Ad
+              </div>
+              <div class="stepdetails">
+                Enter all details like locality name, amenities etc. along with
+                uploading Photos
+              </div>
+            </div>
+            <div class="step">
+              <div class="steptitle">
+                <i class="ri-camera-3-fill"></i>Add Quality Photos
+              </div>
+              <div class="stepdetails">
+                Do not forget to add high-quality photos as it's key for any
+                property to stand out. You can always request a photoshoot of
+                your property through Seikatsu "Photoshoot Service".
+              </div>
+            </div>
+            <div class="step">
+              <div class="steptitle">
+                <i class="ri-map-pin-line"></i>Choose Correct Locality/Address
+              </div>
+              <div class="stepdetails">
+                Make sure to accurately map your locality while filling in the
+                details of your property. Adding a correct locality is essential
+                to receive genuine queries for your property.
+              </div>
+            </div>
+            <div class="step">
+              <div class="steptitle">
+                <i class="ri-book-3-line"></i>Write a Great Description
+              </div>
+              <div class="stepdetails">
+                Provide a short description for your property highlighting the
+                key USPs and all the relevant details to help buyers make a
+                decision. On Magicbricks, you can always request a stellar
+                description by "Content Experts".
+              </div>
+            </div>
+            <div class="step">
+              <div class="steptitle">
+                <i class="ri-book-3-line"></i>Add additional details
+              </div>
+              <div class="stepdetails">
+                You need to add all the relevant details about your property
+                like the type of furnishing, flooring, water supply, etc. for it
+                to rank higher in search results to catch the buyer's eye.
+              </div>
+            </div>
+          </div>
+          <div class="howitworks">
+            <div class="title">Benefits of Selling Your Property Online</div>
+            <div class="step">
+              <span>With a plethora of real estate websites to choose from, posting property online is now easy, convenient and hassle-free. Here are some benefits of buying and selling your property online:</span>
+              <div class="steptitle"><i class="ri-checkbox-circle-fill"></i>Time-Efficient</div>
+              <div class="stepdetails">
+                Selling your property online with portals such as Seikatsu can help you save time, manage your bookings at your convenience and receive quality leads quickly.
+              </div>
+            </div>
+            <div class="step">
+              
+              <div class="steptitle"><i class="ri-checkbox-circle-fill"></i>Get Better Exposure To Potential Buyers</div>
+              <div class="stepdetails">
+                A large number of prospective buyers search online, a far easier way than visiting individuals properties. This helps your property get wider exposure to lakhs of buyers present online.
+              </div>
+            </div>
+            <div class="step">
+              <div class="steptitle"><i class="ri-checkbox-circle-fill"></i>Cost-Effective</div>
+              <div class="stepdetails">
+                By opting to sell online, you can expect a significant reduction in agent fees and overall cost associated with selling a home traditionally.
+              </div>
+            </div>
+          </div>
         </div>
-    <app-footer></app-footer>
+
+        <div class="main-box">
+          <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+            <input
+              class="form-control"
+              (change)="handleFileInput($event)"
+              type="file"
+              id="image"
+              formControlName="images"
+              hidden
+            />
+            <label for="image" class="uploadlabel">
+              <i class="ri-upload-cloud-2-fill"></i>
+              Upload Property Image
+            </label>
+
+            <div class="filewrapper">
+              <div
+                class="showfilebox"
+                *ngFor="let uploadedFile of uploadedFiles; let i = index"
+              >
+                <div>
+                  <div class="filename">
+                    {{ uploadedFile.name.substring(0, 5) }}.png
+                  </div>
+                </div>
+                <div class="right">
+                  <span (click)="removeUploadedFile(i)">&#215;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('image')?.invalid &&
+                  uploadForm.get('image')?.touched
+                "
+                >Upload an Image</span
+              >
+            </div>
+
+            <input
+              id="propertyName"
+              type="text"
+              formControlName="propertyName"
+              placeholder="Property Name"
+            />
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('propertyName')?.invalid &&
+                  uploadForm.get('propertyName')?.touched
+                "
+                >Enter Valid Property Name</span
+              >
+            </div>
+
+            <span class="propertyType">Location</span>
+            <mat-chip-listbox
+              id="locationName"
+              formControlName="locationName"
+              aria-label="locationName"
+              required
+            >
+              <mat-chip-option>Hyderabad</mat-chip-option>
+              <mat-chip-option>Bangalore</mat-chip-option>
+              <mat-chip-option>Bhubaneshwar</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('locationName')?.invalid &&
+                  uploadForm.get('locationName')?.touched
+                "
+                >Enter Valid Location Name</span
+              >
+            </div>
+
+           
+                  <textarea rows="5" cols="30" pInputTextarea formControlName="locationDescription" placeholder="Write a location description in about 300 words"></textarea>
+             
+      
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('locationDescription')?.invalid &&
+                  uploadForm.get('locationDescription')?.touched
+                "
+                >Enter a Location Description</span
+              >
+            </div>
+
+            <span class="propertyType">Property Type</span>
+            <mat-chip-listbox
+              id="propertyType"
+              formControlName="propertyType"
+              aria-label="propertyType"
+              required
+            >
+              <mat-chip-option>Flat</mat-chip-option>
+              <mat-chip-option>Villa/House</mat-chip-option>
+              <mat-chip-option>Plot</mat-chip-option>
+              <mat-chip-option>PG</mat-chip-option>
+              <mat-chip-option>Office</mat-chip-option>
+              <mat-chip-option>Shop</mat-chip-option>
+              <mat-chip-option>Commercial Land</mat-chip-option>
+              <mat-chip-option>Agricultural Land</mat-chip-option>
+              <mat-chip-option>Farm house</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('propertyType')?.invalid &&
+                  uploadForm.get('propertyType')?.touched
+                "
+                >Select the type of Property</span
+              >
+            </div>
+
+            <span class="propertyType">BHK</span>
+            <mat-chip-listbox
+              id="bhk"
+              formControlName="bhk"
+              aria-label="bhk"
+              required
+            >
+              <mat-chip-option>1 BHK</mat-chip-option>
+              <mat-chip-option>2 BHK</mat-chip-option>
+              <mat-chip-option>3 BHK</mat-chip-option>
+              <mat-chip-option>4 BHK</mat-chip-option>
+              <mat-chip-option>5 BHK</mat-chip-option>
+              <mat-chip-option>5 +</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('bhk')?.invalid &&
+                  uploadForm.get('bhk')?.touched
+                "
+                >Select the number of Bedrooms</span
+              >
+            </div>
+
+            <span class="propertyType">Zero Brokerage</span>
+            <mat-chip-listbox
+              id="zeroBrokerage"
+              formControlName="zeroBrokerage"
+              aria-label="zeroBrokerage"
+              required
+            >
+              <mat-chip-option>Yes</mat-chip-option>
+              <mat-chip-option>No</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+                <span
+                  *ngIf="
+                    uploadForm.get('zeroBrokerage')?.invalid &&
+                    uploadForm.get('zeroBrokerage')?.touched
+                  "
+                  >Confirm Brokerage Fees on your end</span
+                >
+              </div>
+
+             <span class="propertyType">RERA Approved</span>
+            <mat-chip-listbox
+              id="reraApproved"
+              formControlName="reraApproved"
+              aria-label="reraApproved"
+              required
+            >
+              <mat-chip-option>Yes</mat-chip-option>
+              <mat-chip-option>No</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+                <span
+                  *ngIf="
+                    uploadForm.get('reraApproved')?.invalid &&
+                    uploadForm.get('reraApproved')?.touched
+                  "
+                  >Validate if the project is Rera Approved</span
+                >
+              </div>
+
+            <input
+              id="squareFoot"
+              type="text"
+              formControlName="squareFoot"
+              placeholder="Exact Square Footage"
+            />
+
+            <span class="propertyType">Bathrooms</span>
+            <mat-chip-listbox
+              id="bathrooms"
+              formControlName="bathrooms"
+              aria-label="bathrooms"
+              required
+            >
+              <mat-chip-option>1</mat-chip-option>
+              <mat-chip-option>2</mat-chip-option>
+              <mat-chip-option>3</mat-chip-option>
+              <mat-chip-option>4</mat-chip-option>
+              <mat-chip-option>5</mat-chip-option>
+              <mat-chip-option>5 +</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('bathrooms')?.invalid &&
+                  uploadForm.get('bathrooms')?.touched
+                "
+                >Select the number of Bathrooms</span
+              >
+            </div>
+            <span class="propertyType">Car Parking</span>  
+            <mat-chip-listbox
+              id="carParking"
+              formControlName="carParking"
+              aria-label="carParking"
+              required
+            >
+              <mat-chip-option>1 Covered</mat-chip-option>
+              <mat-chip-option>1 Uncovered</mat-chip-option>
+              <mat-chip-option>2 Covered</mat-chip-option>
+              <mat-chip-option>2 Uncovered</mat-chip-option>
+              <mat-chip-option>2+ Covered</mat-chip-option>
+              <mat-chip-option>2+ Uncovered</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('carParking')?.invalid &&
+                  uploadForm.get('carParking')?.touched
+                "
+                >Select the number of Car Parking</span
+              >
+            </div>
+
+            <span class="propertyType">Furnishing</span>
+            <mat-chip-listbox
+              id="furnishing"
+              formControlName="furnishing"
+              aria-label="furnishing"
+              required
+            >
+              <mat-chip-option>Furnished</mat-chip-option>
+              <mat-chip-option>Unfurnished</mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="invalid">
+                <span
+                  *ngIf="
+                    uploadForm.get('furnishing')?.invalid &&
+                    uploadForm.get('furnishing')?.touched
+                  "
+                  >Confirm if the property is furnished</span
+                >
+              </div>
+
+            <input
+              id="sku"
+              type="text"
+              formControlName="sku"
+              placeholder="Enter SKU"
+            />
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('sku')?.invalid &&
+                  uploadForm.get('sku')?.touched
+                "
+                >Enter Valid SKU</span
+              >
+            </div>
+
+            <input
+              id="price"
+              type="text"
+              formControlName="price"
+              placeholder="Approximate Starting Price"
+            />
+
+            <div class="invalid">
+              <span
+                *ngIf="
+                  uploadForm.get('price')?.invalid &&
+                  uploadForm.get('price')?.touched
+                "
+                >Enter a approximate starting price</span
+              >
+            </div>
+
+            <div #map class="map"></div>
+            <button [disabled]="uploadForm.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
 </div>

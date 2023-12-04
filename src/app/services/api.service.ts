@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 import { AuthService } from './auth.service';
 
 export interface Notifs{
-  _id :  string;
+  id :  string;
 senderName : string;
 receiverName : string;
 flaggedUser	: string;
@@ -23,7 +23,8 @@ export interface UploadEvent {
 
 
 export interface user {
-  _id: string;
+  images:string[];
+  id: string;
   username: string;
   password: string;
   email: string;
@@ -38,9 +39,28 @@ export interface Properties {
   locationDescription: string;
   propertyName: string;
   price:string;
+  propertyType:string;
+  bhk:string;
+  zeroBrokerage:string;
+  reraApproved:string;
+  squareFoot:string;
+  bathrooms:string;
+  carParking:string;
+  furnishing:string;
   sku:string;
   userIds:string;
   geoLocation: GeoLocation; // assuming GeoLocation is another interface
+}
+
+export interface message{
+    id: string,
+    senderName: string,
+    receiverName: string,
+    flaggedUser: string,
+    flag: string,
+    message: string,
+    messageType: string,
+    time: string
 }
 
 export interface GeoLocation{
@@ -64,14 +84,25 @@ export class ApiService {
   constructor(private database : HttpClient, private passwordHashService: PasswordHashService) { }
 
   addUser(userdata:any){
-      const hashedPassword = this.passwordHashService.hashPassword(userdata.password);
-      userdata.password=hashedPassword;
-
+      // const hashedPassword = this.passwordHashService.hashPassword(userdata.password);
+      // userdata.password=hashedPassword;
       return this.database.post('https://localhost:7122/api/Users', userdata);
   }
 
   addProperty(propertyData:Properties){
     return this.database.post<Properties>('https://localhost:7122/api/Properties',propertyData)
+  }
+
+  userLogin(userdata:user){
+    return this.database.post<user>('https://localhost:7122/api/Users/login',userdata)
+  }
+
+  sendMessage(messageData:message){
+    return this.database.post<message>('https://localhost:7122/api/Notif',messageData)
+  }
+
+  deleteMessage(id:string){
+    return this.database.delete(`https://localhost:7122/api/Notif/${id}`);
   }
 
   appendPropertyDataintoUser(username: string, propertyData: Properties): Observable<any> {

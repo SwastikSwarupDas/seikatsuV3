@@ -1,16 +1,5 @@
 <div class="all">
-    <app-navbar></app-navbar>
     <div class="main">
-        <div *ngFor="let notif of notifs" class="messages">
-            <div class="message">
-                <div class="message-cnt">
-                    {{notif.message}}
-                </div>
-                <div class="from">
-                    {{notif.senderName}}
-                </div>
-            </div>
-        </div>
+        <app-send></app-send>
     </div>
-    <app-footer></app-footer>
 </div>

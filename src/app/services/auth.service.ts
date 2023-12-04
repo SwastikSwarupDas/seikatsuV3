@@ -21,11 +21,7 @@ export class AuthService {
 
   loginSuccess(user:user){
     console.log(user);
-    this.isAuthenticatedSubject.next(true);
-    this.usernameSubject.next(user.username);
-    this.userTypeSubject.next(user.usertype);
-    this.userIdSubject.next(user._id);
-    this.userPropertyIds.next(user.propertyIds);
+  
     this.router.navigate(['']);
   }
 

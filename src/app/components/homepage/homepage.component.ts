@@ -3,142 +3,106 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService, GeoLocation, Properties } from 'src/app/services/api.service';
 import {} from 'googlemaps';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  providers: [MessageService]
 })
 export class HomepageComponent {
+
+  selectedCity: string | null = null;
+  selectedPropertyType: string | null = null;
+  showOptions = false;
+  showOptionsProperty = false;
 
   location: GeoLocation = {
     longitude:0,
     latitude:0
   }
 
-  @ViewChild('map') mapElement: any;
 
-  map!: google.maps.Map;
-  beachMarker!:google.maps.Marker;
-  image:string = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-  lat:number=17.433412099500895;
-  lng:number=78.38158316758812;
+
+  value:number=50;
+ 
   
+  toggleOptions(): void {
+    this.showOptions = !this.showOptions;
+  }
+  toggleOptionsProperty(): void {
+    this.showOptionsProperty = !this.showOptionsProperty;
+  }
 
 
   loaded:boolean=false;
   fg:FormGroup;
   properties: Properties[] = [];
   filteredProperties: Properties[] = [];
-  constructor(private apiService: ApiService,fb:FormBuilder,private router:Router) {
+
+  recomProperties:Properties[]=[];
+  reraProperties:Properties[]=[];
+  zeroProperties:Properties[]=[];
+
+
+  constructor(private apiService: ApiService,fb:FormBuilder,private router:Router, private messageService: MessageService) {
     this.fg=fb.group({
-      fc:''
+      fc:'',
+      property:'Flat',
     })
   }
+
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Eligible for Home Loan', detail: 'Apply now for quick processing' });
+}
+
+  responsiveOptions: any[] | undefined;
 
   ngOnInit() {
     this.fetchProperties();
     this.fg.get('fc')?.valueChanges.subscribe(() => {
       this.search();
   });
+  this.fg.get('property')?.valueChanges.subscribe(()=>{
+    this.search();
+  });
 
-  }
-
-
-  ngAfterViewInit(){
-    const mapProperties = {
-      center: new google.maps.LatLng(this.lat,this.lng ),
-      zoom: 4,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-
+  this.responsiveOptions = [
+    {
+        breakpoint: '1199px',
+        numVisible: 1,
+        numScroll: 1
+    },
+    {
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 1
+    },
+    {
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1
     }
-  
-    this.map = new google.maps.Map(this.mapElement.nativeElement,{
-      center: { lat: this.lat, lng: this.lng },
-    zoom: 12,
-    styles: [
-      { elementType: "geometry", stylers: [{ color: "#15ac7f" }] },
-      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.fill", stylers: [{ color: "#61ab79" }] },
-      {
-        featureType: "administrative.locality",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#ffffff" }],
-      },
-      {
-        featureType: "poi",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#83d49d" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "geometry",
-        stylers: [{ color: "#84e0b1" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#6b9a76" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{ color: "#84e0b1" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#ffffff" }],
-      },
-      {
-        featureType: "road",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#9ca5b3" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry",
-        stylers: [{ color: "#84e0b1" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#15ac7f" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#f3d19c" }],
-      },
-      {
-        featureType: "transit",
-        elementType: "geometry",
-        stylers: [{ color: "#2f3948" }],
-      },
-      {
-        featureType: "transit.station",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [{ color: "#84e0b1" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#515c6d" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.stroke",
-        stylers: [{ color: "#ffffff" }],
-      },
-    ],
-    });
+];
+
   }
+
+  selectCity(city: string): void {
+    this.selectedCity = city;
+    this.fg.get('fc')?.setValue(city); // Update the form control 'fc' value
+    this.showOptions = false; // Hide options after selection
+  }
+
+  selectPropertyType(property:string):void{
+    this.selectedPropertyType=property;
+    this.fg.get('property')?.setValue(property);
+    this.showOptionsProperty = false;
+  }
+
+
+  
 
   fetchProperties() {
     this.apiService.getAllProperties().subscribe(properties => {
@@ -146,14 +110,45 @@ export class HomepageComponent {
       this.filteredProperties=properties;
       this.loaded=true;
       console.log(properties);
+
+      this.properties = this.shuffleArray(this.properties);
+      this.recomProperties = this.properties.slice(0, 4);
+      this.reraProperties = this.properties.filter(property => property.reraApproved === 'Yes').slice(0, 4);
+      this.zeroProperties = this.properties.filter(property => property.zeroBrokerage === 'Yes').slice(0, 4);
       
     });
   }
+
+  shuffleArray(array: any[]): any[] {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+  
+    while (0 !== currentIndex) {
+     
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+
+
+
   search(){
     let searchQuery=this.fg.get('fc')?.value.toLowerCase();
-    this.filteredProperties=this.properties.filter((i)=>{
-      return i.propertyName.toLowerCase().includes(searchQuery);
-    })
+    let selectedProperty = this.fg.get('property')?.value.toLowerCase();
+    this.filteredProperties = this.properties.filter((item) => {
+      const locationMatches = item.locationName.toLowerCase().includes(searchQuery);
+      const propertyMatches = item.propertyType.toLowerCase() === selectedProperty;
+  
+      // Filter based on both search query and selected property type
+      return locationMatches && propertyMatches;
+    });
   }
   sortPropertiesByPriceAsc() {
     this.filteredProperties.sort((a, b) => {

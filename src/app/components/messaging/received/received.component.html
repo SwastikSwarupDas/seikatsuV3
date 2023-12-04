@@ -1,0 +1,26 @@
+<div class="all">
+    <app-navbar></app-navbar>
+    <div class="main">
+        <app-notif-sidebar></app-notif-sidebar>
+        <div class="msg-window">
+            <div class="messages">
+                <div class="message" *ngFor="let notif of notifs">
+                    <div class="top-row">
+                        To {{notif.receiverName}},
+                        <div class="time-stamp">
+                            {{notif.time}}
+                        </div>
+                        <button class="delete">
+                            <i class="ri-delete-bin-fill"></i>
+                        </button>
+                    </div>
+                    <div class="msg-txt">
+                        {{notif.message.substring(0,80)}}...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
+

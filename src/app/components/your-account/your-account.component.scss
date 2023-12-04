@@ -33,7 +33,8 @@ $color-scale-blue-9: #051d4d;
 .all{
     overflow-x: hidden;
 .main{
-    background-color: $primary-sea-green-3;
+    margin-top: 6.7vw;
+    background-color: white;
     .toprow{
         padding: 1vw 4vw;
         font-weight: 100;
@@ -54,6 +55,17 @@ $color-scale-blue-9: #051d4d;
             padding: 1vw;
             border-radius: 0.8vw;
             background-color: $primary-sea-green-5 ;
+        }
+        .pfp-holder{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            overflow: hidden;
+            width: 15vw;
+            img{
+                width: 25vw;
+            }
         }
     }
     .user-info{

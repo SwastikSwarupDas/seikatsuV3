@@ -1,12 +1,106 @@
 <div class="all">
   <app-navbar></app-navbar>
   <div class="main">
+   
+    <div class="carousel-container">
+
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../../assets/carousel1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../../assets/carousel2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../../assets/avi-waxman-f9qZuKoZYoY-unsplash.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
 
     <div class="search-stuff">
+      <span class="welcome">Welcome Back! Lets Continue your search</span>
       <form [formGroup]="fg">
-        <input placeholder="Looking for something ?" formControlName="fc">
-        <button (click)="sortPropertiesByPriceAsc()">Budget Low to High</button>
-        <button (click)="sortPropertiesByPriceDesc()">Budget High to Low</button>
+        
+        <div class="select-menu" [ngClass]="{ 'open': showOptions }">
+          <div class="select-btn" (click)="toggleOptions()">
+          <span class="sBtn-text">{{ selectedCity ? selectedCity : 'City' }}</span>
+          <i class="ri-arrow-drop-down-line"></i>
+          </div>
+          <ul class="options" *ngIf="showOptions">
+            <li class="option"  (click)="selectCity('Hyderabad')">
+              <i class="ri-government-line"></i>
+              <span class="option-text" >Hyderabad</span>
+            </li>
+            <li class="option"  (click)="selectCity('Bangalore')">
+              <i class="ri-building-line"></i>
+              <span class="option-text">Bangalore</span>
+            </li>
+            <li class="option"  (click)="selectCity('Bhubaneshwar')">
+              <i class="ri-ancient-pavilion-line"></i>
+              <span class="option-text">Bhubaneshwar</span>
+            </li>
+          </ul>
+          </div>
+
+
+          <div class="select-menu" [ngClass]="{ 'open': showOptionsProperty }">
+            <div class="select-btn" (click)="toggleOptionsProperty()">
+            <span class="sBtn-text">{{ selectedPropertyType ? selectedPropertyType : 'Flat' }}</span>
+            <i class="ri-arrow-drop-down-line"></i>
+            </div>
+            <ul class="options" *ngIf="showOptionsProperty">
+              <li class="option"  (click)="selectPropertyType('Flat')">
+                <i class="ri-government-line"></i>
+                <span class="option-text" >Flat</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Villa/House')">
+                <i class="ri-building-line"></i>
+                <span class="option-text">Villa/House</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Plot')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Plot</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('PG')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">PG</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Office')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Office</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Shop')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Shop</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Commercial Land')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Commercial Land</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Agricultural Land')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Agricultural Land</span>
+              </li>
+              <li class="option"  (click)="selectPropertyType('Farm house')">
+                <i class="ri-ancient-pavilion-line"></i>
+                <span class="option-text">Farm house</span>
+              </li>
+            </ul>
+            </div>
+
+            <button (click)="sortPropertiesByPriceAsc()">Budget Low to High</button>
+            <button (click)="sortPropertiesByPriceDesc()">Budget High to Low</button>
       </form>
     </div>
    
@@ -45,28 +139,104 @@
               <i class="ri-user-3-line"></i>
             </div>
             <div class="right">
-              <div class="property-title">{{ property.propertyName }}</div>
+              <div class="property-title">{{ property.propertyName.substring(0,16) }}</div>
               <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="cities">
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="btnradio1">Hyderabad</label>
-        
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btnradio2">Bangalore</label>
-        
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btnradio3">Bhubaneshwar</label>
-        </div>
-      </div>
-
-      <div #map class="map"></div>
+    
     
   </div>
+
+  <div class="toprow">
+    HOT PROPERTIES
+  </div>
+  
+  <div *ngIf="loaded" class="property-display">
+    <div *ngFor="let property of recomProperties" class="property" routerLink="/details/{{property.id}}">
+      <div class="img-holder" *ngFor="let image of property.images">
+        <div class="fire"><i class="ri-fire-line"></i></div>
+        <img [src]="image" alt="{{ property.propertyName }} image" />
+      </div>
+      <div class="info">
+        <div class="uploader-img">
+          <i class="ri-user-3-line"></i>
+        </div>
+        <div class="right">
+          <div class="property-title">{{ property.propertyName.substring(0,16) }}</div>
+          <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="homeloan">
+    <div class="left-text">
+      <div class="heading">Need a Home Loan?</div>
+      <div class="subtext">Know how much Home Loan you can take.</div>
+    </div>
+    <div class="middle">
+      <span>
+        Select Monthly Income (x1000$)
+      </span>
+      <div class="card flex justify-content-center">
+        <div>
+            <input type="text" pInputText [(ngModel)]="value" class="w-full"/>
+            <p-slider [(ngModel)]="value" class="w-full"></p-slider>
+        </div>
+    </div>
+    </div>
+    <div class="right">
+      <p-toast></p-toast>
+      <button pButton pRipple (click)="show()" class="p-button-success">Check Home Loan Eligibility</button>
+    </div>
+  </div>
+  
+  <div class="toprow">
+    RERA APPROVED
+  </div>
+
+  <div *ngIf="loaded" class="property-display">
+    <div *ngFor="let property of reraProperties" class="property" routerLink="/details/{{property.id}}">
+      <div class="img-holder" *ngFor="let image of property.images">
+        <div class="greenlit">RERA APPROVED</div>
+        <img [src]="image" alt="{{ property.propertyName }} image" />
+      </div>
+      <div class="info">
+        <div class="uploader-img">
+          <i class="ri-user-3-line"></i>
+        </div>
+        <div class="right">
+          <div class="property-title">{{ property.propertyName.substring(0,16) }}</div>
+          <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="toprow">
+    ENJOY NO BROKERAGE FOR FREE!!
+  </div>
+
+  <div *ngIf="loaded" class="property-display">
+    <div *ngFor="let property of zeroProperties" class="property" routerLink="/details/{{property.id}}">
+      <div class="img-holder" *ngFor="let image of property.images">
+        <div class="greenlit">ZERO BROKERAGE</div>
+        <img [src]="image" alt="{{ property.propertyName }} image" />
+      </div>
+      <div class="info">
+        <div class="uploader-img">
+          <i class="ri-user-3-line"></i>
+        </div>
+        <div class="right">
+          <div class="property-title">{{ property.propertyName.substring(0,16) }}</div>
+          <div class="uploaded-by">Marketed by {{ property.userIds }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <app-footer></app-footer>
 </div>

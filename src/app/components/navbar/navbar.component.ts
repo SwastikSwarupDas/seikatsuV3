@@ -16,7 +16,8 @@ export class NavbarComponent {
   userType$: Observable<string> = this.authService.getUserType();
 
   user: user={
-    _id: '',
+    images:[],
+    id: '',
     username: '',
     password: '',
     email: '',

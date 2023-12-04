@@ -11,8 +11,8 @@ export class ElitesComponent {
   payNow() {
     const RozarpayOptions = {
       description: 'Sample Razorpay demo',
-      currency: 'INR',
-      amount: 100000,
+      currency: 'USD',
+      amount: 17000,
       name: 'Sai',
       key: 'rzp_test_WyLkfRfd5Xz0yF',
       image: 'https://i.imgur.com/FApqk3D.jpeg',

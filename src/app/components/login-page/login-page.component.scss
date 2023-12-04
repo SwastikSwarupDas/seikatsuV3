@@ -1,12 +1,11 @@
-
-$primary-sea-green-2 : rgb(238, 253, 248);
-$primary-sea-green-3 : rgb(219, 253, 242);
-$primary-sea-green-4 : rgb(53, 237, 181);
-$primary-sea-green-4 : rgb(33, 217, 161);
-$primary-sea-green-5 : rgb(23, 207, 151);
-$primary-sea-green-6 : rgb(21, 172, 127);
-$primary-sea-green-7 : rgb(10, 109, 79);
-$primary-sea-green-8 : rgb(2, 69, 49);
+$primary-sea-green-2: rgb(238, 253, 248);
+$primary-sea-green-3: rgb(219, 253, 242);
+$primary-sea-green-4: rgb(53, 237, 181);
+$primary-sea-green-4: rgb(33, 217, 161);
+$primary-sea-green-5: rgb(23, 207, 151);
+$primary-sea-green-6: rgb(21, 172, 127);
+$primary-sea-green-7: rgb(10, 109, 79);
+$primary-sea-green-8: rgb(2, 69, 49);
 
 $color-scale-black: #010409;
 $color-scale-white: #ffffff;
@@ -61,164 +60,242 @@ $color-scale-orange-7: #762d0a;
 $color-scale-orange-8: #5a1e02;
 $color-scale-orange-9: #3d1300;
 
+.all {
+  overflow: hidden;
+  background-image: url(../../../assets/CitySkyline.jfif);
+  background-size: cover;
+  .main {
+    background-color: transparent;
 
+    .anothercontainer {
+      display: flex;
+      margin-top: 6.6vw;
+      .informationbox {
+        backdrop-filter: brightness(35%) blur(10px);
+        padding: 2vw;
+        width: 30vw;
+        color: white;
+        .heading {
+          font-size: 2vw;
+        }
+        .list {
+          display: block;
+          span {
+            margin-top: 2vw;
+            i {
+              color: rgb(153, 188, 100);
+            }
+          }
+        }
+      }
+      .container {
+        padding: 3vw;
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
 
-.all{
-    .main{
-        background-color: $primary-sea-green-3;
-        .container{
-            padding: 3vw;
+        .advert-span {
+          display: flex;
+          gap: 3vw;
+          .advert {
+            overflow: hidden;
+            border-radius: 0.8vw;
+            background: url(https://picsum.photos/2000/?blur=10);
+            background-size: cover;
+            background-color: $primary-sea-green-7;
+            display: flex;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 1vw;
+            width: 40vw;
+            gap: 1vw;
+            padding: 2vw 0;
+            backdrop-filter: blur(10px);
+            .logo {
+              color: gold;
+              font-size: 5vw;
+            }
+            .text {
+              padding: 2.5vw;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+            .register {
+              width: 25vw;
+              background-color: $color-scale-gray-7;
+              color: $color-scale-gray-1;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: none;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+            }
+            .register:hover {
+              background-color: $color-scale-gray-6;
+              color: white;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+            }
+          }
+
+          form {
             display: flex;
             flex-direction: column;
-            gap: 3vw;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: brightness(35%) blur(10px);
+            border-radius: 1vw;
+            padding: 2vw;
 
-            .advert-span{
+            .filewrapper {
+              margin-top: -5vw;
+              margin-left: 1vw;
+              height: 4vw;
+              background-color: rgba(134, 43, 43, 0);
+              width: 92%;
+              border-radius: 0.4vw;
+              overflow: hidden;
+              .showfilebox {
+                background-color: $color-scale-blue-4;
+                color: white;
                 display: flex;
-                .advert{
-                    overflow: hidden;
-                    border-radius: 0.8vw;
-                    background:url(https://picsum.photos/2000/?blur=10);
-                    background-size: cover;
-                    background-color: $primary-sea-green-7;
-                    display: flex;
-                    color: white;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    font-size: 1vw;
-                    width: 40vw;
-                    gap: 1vw;
-                    padding: 2vw 0;
-                    .logo{
-                        color: gold;
-                        font-size: 5vw;
-                    }
-                    .text{
-                        padding: 2.5vw;
-                        background-color: rgba(0,0,0,0.5);
-                    }
-                    .register{
-                        width: 25vw;
-                        background-color: $color-scale-gray-7;
-                        color:$color-scale-gray-1;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        box-shadow: none;
-                        transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-                    }
-                    .register:hover{
-                        background-color: $color-scale-gray-6;
-                        color:white;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
-                        cursor: pointer;
-                    }
-                }
-
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    .inputline{
-                        display: flex;
-                        align-items: center;
-                        gap: 1vw;
-                        color: red;
-                        i{
-                            color: red;
-                            font-size: 1.4vw;
-                            font-family: "Gabarito";
-                        }
-                        width: 40vw;
-                    }
-                    input{
-                        caret-color: #010409;
-                        width: 25vw;
-                        border: none;
-                        outline: none;
-                        border-radius: 0.4vw;
-                        padding: 1vw 1vw;
-                    }
-                    .invalid{
-                        height: 1vw;
-                        color: rgba(255,0,0,0.5);
-                        margin-bottom: 1.2vw;
-                        margin-top: 0.2vw;
-                        font-weight: 100;
-                    }
-                    mat-chip-listbox{
-                        mat-chip-option{
-                            background-color: $color-scale-blue-3;
-                            border-radius: 0.6vw;
-                            color: white;
-                        }
-                    }
-    
-                    button:disabled{
-                        background-color: $color-scale-gray-7;
-                        color:$color-scale-gray-4;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        cursor: not-allowed;
-                        transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-                    }
-                    
-                    button{
-                        width: 25vw;
-                        background-color: $color-scale-gray-7;
-                        color:$color-scale-gray-1;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        box-shadow: none;
-                        transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-                    }
-                    
-                    button:disabled:hover{
-                        background-color: $color-scale-gray-7;
-                        color: $color-scale-gray-4;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        cursor: not-allowed;
-                        transition: color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-                    }
-                    
-                    button:hover{
-                        background-color: $color-scale-gray-6;
-                        color:white;
-                        font-size: 2vw;
-                        border-radius: 0.6vw;
-                        font-weight: 600;
-                        letter-spacing: 0.1vw;
-                        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
-                        cursor: pointer;
-                        
-                    }
-                }
-            
+                align-items: center;
+                justify-content: space-between;
+                padding: 0vw 1.2vw;
+                font-size: 1.4vw;
+                height: 101%;
+              }
             }
 
-            .tell{
-                font-size: 4vw;
-                color: $color-scale-gray-6;
-                font-weight: 600;
+            .uploadlabel {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              background-color: $color-scale-white;
+              color: $color-scale-gray-4;
+              border-radius: 0.6vw;
+              font-size: 1.4vw;
+              height: 16vw;
+              margin-bottom: 0.6vw;
+              border: 4px $color-scale-gray-4 dashed;
+              cursor: pointer;
+              i {
+                margin-right: 0.5vw;
+                font-size: 2.2vw;
+              }
             }
+
+            p-password{
+              background-color: white;
+              border-radius: 0.6vw;
+              width: 100%;
+            }
+
+            .inputline {
+              display: flex;
+              align-items: center;
+              gap: 1vw;
+              color: red;
+              i {
+                color: red;
+                font-size: 1.4vw;
+                font-family: "Gabarito";
+              }
+            }
+            input {
+              caret-color: #010409;
+              width: 25vw;
+              border: none;
+              outline: none;
+              border-radius: 0.4vw;
+              padding: 1vw 1vw;
+            }
+            .invalid {
+              height: 1vw;
+              color: rgba(255, 0, 0, 0.5);
+              margin-bottom: 1.2vw;
+              margin-top: 0.2vw;
+              font-weight: 100;
+            }
+            mat-chip-listbox {
+              mat-chip-option {
+                background-color: $color-scale-blue-3;
+                border-radius: 0.6vw;
+                color: white;
+              }
+            }
+
+            button:disabled {
+              background-color: $color-scale-gray-7;
+              color: $color-scale-gray-4;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              cursor: not-allowed;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+            }
+
+            button {
+              width: 25vw;
+              background-color: $color-scale-gray-7;
+              color: $color-scale-gray-1;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: none;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+            }
+
+            button:disabled:hover {
+              background-color: $color-scale-gray-7;
+              color: $color-scale-gray-4;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              cursor: not-allowed;
+              transition: color 0.2s ease-out, background-color 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+            }
+
+            button:hover {
+              background-color: $color-scale-gray-6;
+              color: white;
+              font-size: 2vw;
+              border-radius: 0.6vw;
+              font-weight: 600;
+              letter-spacing: 0.1vw;
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+              cursor: pointer;
+            }
+          }
         }
+
+        .tell {
+          font-size: 4vw;
+          color: $color-scale-gray-6;
+          font-weight: 600;
+        }
+      }
     }
+  }
 }
 
 ::ng-deep .mdc-evolution-chip__text-label {
-    margin: 1vw;
-    color: white !important;
-    font-size: 5vw;
-    font-weight: 800;
+  margin: 1vw;
+  color: white !important;
+  font-size: 5vw;
+  font-weight: 800;
 }

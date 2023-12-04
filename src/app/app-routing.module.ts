@@ -11,6 +11,12 @@ import { PropertyDetailsComponent } from './components/property-details/property
 import { ElitesComponent } from './components/elites/elites.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+import { SendComponent } from './components/messaging/send/send.component';
+import { ReceivedComponent } from './components/messaging/received/received.component';
+import { ReportsComponent } from './components/messaging/reports/reports.component';
+import { Path } from 'leaflet';
+import { NewmsgComponent } from './components/messaging/newmsg/newmsg.component';
+
 
 
 const routes: Routes = [
@@ -49,6 +55,25 @@ const routes: Routes = [
     path:"elites",
     component:ElitesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:"send",
+    component:SendComponent,
+    // outlet:"notifoutlet"
+  },
+  {
+    path:"receive",
+    component:ReceivedComponent,
+    // outlet:"notifoutlet"
+  },
+  {
+    path:"reports",
+    component:ReportsComponent,
+    // outlet:"notifoutlet" 
+  },
+  {
+    path:"newmsg",
+    component:NewmsgComponent,
   }
 ];
 
